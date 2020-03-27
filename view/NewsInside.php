@@ -85,11 +85,19 @@
                      </div>
                 <div class="sidebar-module">
                     <h4>我們想推薦給你</h4>
+                    <?php
+                    include "../controller/db.php";
+                    $sql = "SELECT * FROM sweetlife.news WHERE category =  LIMIT 3";
+                    $val = $conn->query($sql)->fetch_all(1);
+                    $url = 'http://localhost:8888/SweetsLife/view/NewsInside.php/'.$val['id'];
+                    foreach($val as $k =>$v){
+                        ?>
                     <ol class="list-unstyled">
-                        <li><a href="#">文章標題文章標題文章標題</a></li>
-                        <li><a href="#">文章標題文章標題文章標題 2014</a></li>
-                        <li><a href="#">文章標題文章標題文章標題 2014</a></li>
+                        <li><a href="<?php $url ?>"><?php echo $v['title']?>></a></li>
+<!--                        <li><a href="#">文章標題文章標題文章標題 2014</a></li>-->
+<!--                        <li><a href="#">文章標題文章標題文章標題 2014</a></li>-->
                     </ol>
+                    <?php }?>
                 </div>
 
             </div><!-- /.blog-sidebar -->
