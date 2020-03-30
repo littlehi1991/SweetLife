@@ -2,18 +2,26 @@
     $date = $_POST['date'];
     $articletitle = $_POST['articletitle'];
     $category= $_POST['category'];
-    $author = $_POST['author_id'];
-    $file = $_POST['file'];
+    $author = $_POST['author'];
+    $file = $_FILES['file']['name'];
     $ararticle = $_POST['article'];
 
-  //var_dump($date);exit;
-    include "../controller/db.php";
-
-    $sql = "INSERT INTO sweetlife.news (create_time, title, category, author_id, img, contant) 
-     VALUES  ('" . $date . "', '" . $articletitle . "', '" . $category . "', '" . $author . "', '" . $file . "', '" . $ararticle . "')";
+    //搬移圖片至指定資料夾
+    $dest = 'upload/' . $file;
+    if (file_exists('upload/' . $file)){
+        //todo img exist exception
+        //echo '檔案已存在。<br/>';
+    } else {
+        $nfile = $_FILES['file']['tmp_name'];
+        # 將檔案移至指定位置
+        move_uploaded_file($nfile, $dest);
+    }
+   include "../controller/db.php";
+    $sql = "INSERT INTO sweetlife.news (create_time, title, category, author_id, img, contant)
+     VALUES  ('" . $date . "', '" . $articletitle . "', '" . $category . "', '" . $author . "', '" . $dest . "', '" . $ararticle . "')";
 
     //echo $sql;exit;
-
+//
     $rs = $conn->query($sql);
 
     if ($rs) {

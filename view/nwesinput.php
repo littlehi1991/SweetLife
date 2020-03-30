@@ -4,7 +4,7 @@
     </head>
     <body>
         <h2>新增文章</h2>
-        <form method="POST" action="../controller/save_article.php">
+        <form method="POST" action="../controller/save_article.php" enctype="multipart/form-data" >
             請選擇上架日期：
             <input name="date" type="date" >
             <br/>
