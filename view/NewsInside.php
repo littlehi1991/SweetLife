@@ -8,7 +8,7 @@
         <!-- Bootstrap CSS -->
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 
-        <title>精緻人生首頁</title>
+        <title>精緻人生新文章內頁</title>
     </head>
     <body>
 
@@ -42,11 +42,13 @@
 
 <!--        連線資料庫-->
          <?php
-        include "../controller/db.php";
-        $sql = "SELECT * FROM sweetlife.news  JOIN sweetlife.author ON news.author_id = author.author_id WHERE news.id=4 AND author.author_id=6";
-        $val = $conn->query($sql)->fetch_all(1);
-       // var_dump($val);exit;
-        ?>
+//            error_reporting( E_ALL );
+            $page = $_GET['$id'];
+            include "../controller/db.php";
+            $sql = "SELECT * FROM sweetlife.news  JOIN sweetlife.author";
+            $val = $conn->query($sql)->fetch_all(1);
+           // var_dump($val);exit;
+         ?>
 <!--        將資料庫取出各欄位的值填入html-->
     <div class="container">
         <div class="blog-header">
@@ -85,17 +87,19 @@
                      </div>
                 <div class="sidebar-module">
                     <h4>我們想推薦給你</h4>
+
                     <?php
                     include "../controller/db.php";
-                    $sql = "SELECT * FROM sweetlife.news WHERE category =  LIMIT 3";
+                    require "config.php";
+                    $sql = "SELECT * FROM sweetlife.news WHERE category =3  LIMIT 5";
                     $val = $conn->query($sql)->fetch_all(1);
-                    $url = 'http://localhost:8888/SweetsLife/view/NewsInside.php/'.$val['id'];
+                    $id = $val[0]['id'];
+                    $url = DOMAIN."SweetsLife/view/NewsInside.php?id=".$id;
+//                    echo $url;exit;
                     foreach($val as $k =>$v){
                         ?>
                     <ol class="list-unstyled">
-                        <li><a href="<?php $url ?>"><?php echo $v['title']?>></a></li>
-<!--                        <li><a href="#">文章標題文章標題文章標題 2014</a></li>-->
-<!--                        <li><a href="#">文章標題文章標題文章標題 2014</a></li>-->
+                        <li><a href="<?php echo $url; ?>"><?php echo $v['title'];?></a></li>
                     </ol>
                     <?php }?>
                 </div>

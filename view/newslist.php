@@ -45,12 +45,12 @@
                 <div class="row">
                     <div class="col-md-4">
                         <div class="card mb-4 shadow-sm">
-                            <svg class="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: Thumbnail"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"/><text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text></svg>
+                            <a href="#" title="測試超連結"><img src="圖片網址" alt="測試圖片" border="0"></a>
                             <span class="badge badge-danger">活動</span>
                             <span class="badge badge-success">健康</span>
                             <span class="badge badge-warning">食譜</span>
-                            <div class="card-body">
-                                <p class="card-text">文章標題</p>
+                            <a class="card-body">
+                                <a href="#"><p class="card-text">文章標題</p></a>
                                 <small class="text-muted">作者名稱</small><hr/>
                                 <div class="d-flex justify-content-between align-items-center">
                                     <div class="btn-group">
@@ -62,6 +62,7 @@
                             </div>
                         </div>
                     </div>
+
 
     </main>
 
