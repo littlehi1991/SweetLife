@@ -42,10 +42,10 @@
 
 <!--        連線資料庫-->
          <?php
-//            error_reporting( E_ALL );
-            $page = $_GET['$id'];
+            $page = $_GET['id'];
+//            echo $page;exit;
             include "../controller/db.php";
-            $sql = "SELECT * FROM sweetlife.news  JOIN sweetlife.author";
+            $sql = "SELECT * FROM sweetlife.news  JOIN sweetlife.author WHERE id='$page'";
             $val = $conn->query($sql)->fetch_all(1);
            // var_dump($val);exit;
          ?>
@@ -93,13 +93,11 @@
                     require "config.php";
                     $sql = "SELECT * FROM sweetlife.news WHERE category =3  LIMIT 5";
                     $val = $conn->query($sql)->fetch_all(1);
-                    $id = $val[0]['id'];
-                    $url = DOMAIN."SweetsLife/view/NewsInside.php?id=".$id;
-//                    echo $url;exit;
+//                    $id = $val[0]['id'];
                     foreach($val as $k =>$v){
                         ?>
                     <ol class="list-unstyled">
-                        <li><a href="<?php echo $url; ?>"><?php echo $v['title'];?></a></li>
+                        <li><a href="<?php echo  DOMAIN."SweetsLife/view/NewsInside.php?id=".$v['id']; ?>"><?php echo $v['title'];?></a></li>
                     </ol>
                     <?php }?>
                 </div>
