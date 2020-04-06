@@ -43,11 +43,9 @@
 <!--        連線資料庫-->
          <?php
             $page = $_GET['id'];
-//            echo $page;exit;
             include "../controller/db.php";
-            $sql = "SELECT * FROM sweetlife.news  JOIN sweetlife.author WHERE id='$page'";
+            $sql = "SELECT * FROM sweetlife.news n  JOIN sweetlife.author a ON n.author_id = a.author_id WHERE n.id='$page' ";
             $val = $conn->query($sql)->fetch_all(1);
-           // var_dump($val);exit;
          ?>
 <!--        將資料庫取出各欄位的值填入html-->
     <div class="container">
@@ -56,7 +54,6 @@
 
                 <h1 class="blog-title"> <?php echo $val[0]["title"] ?> </h1>
 
-            <p class="lead blog-description">作者名稱作者名稱</p>
         </div>
 
         <div class="row">
@@ -82,8 +79,8 @@
 
             <div class="col-sm-3 col-sm-offset-1 blog-sidebar">
                 <div class="sidebar-module sidebar-module-inset">
-                    <h4><?php  echo $val[0]["a_name"] ?></h4>
-                    <p><?php echo $val[0]["intro"] ?></p>
+                    <h4><?php  echo $val[0]["a_name"];?></h4>
+                    <p><?php echo $val[0]["intro"];?></p>
                      </div>
                 <div class="sidebar-module">
                     <h4>我們想推薦給你</h4>
