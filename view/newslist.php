@@ -42,25 +42,53 @@
         </header>
         <div class="album py-5 bg-light">
             <div class="container">
+                <?php
+                //陣列取出指定的資料表欄位
+                include "../controller/db.php";
+                require "config.php";
+                $sql = "SELECT * FROM sweetlife.news n JOIN sweetlife.author a ON n.author_id = a.author_id LIMIT 2";
+                $val = $conn->query($sql)->fetch_all(1);
+                //迴圈取出資料表內的鍵跟值
+                foreach ($val as $k => $v){
+                    $cate  = '' ;
+                    $class = '' ;
+                    switch($v['category']){
+                        case '1':
+                            $cate = "活動";
+                            $class = "badge badge-danger";
+                            break;
+                        case '2':
+                            $cate = "健康";
+                            $class = "badge badge-success";
+                            break;
+                        default :
+                            $cate = "食譜";
+                            $class ="badge badge-warning";
+                            break;
+                    }
+                    $val[$k]['category'] = $cate;
+                ?>
                 <div class="row">
                     <div class="col-md-4">
                         <div class="card mb-4 shadow-sm">
-                            <a href="#" title="測試超連結"><img src="圖片網址" alt="測試圖片" border="0"></a>
-                            <span class="badge badge-danger">活動</span>
-                            <span class="badge badge-success">健康</span>
-                            <span class="badge badge-warning">食譜</span>
+                            <div style="width: ˇ30%;"><a href="#" title="title"><img src=<?php echo "../controller/".$v['img']?> alt="測試圖片"  width="350px" ></a></div>
+                                <span class="<?php echo $class;?>"><?php echo $cate; ?></span>
+<!--                                <span class="badge badge-success"> 健康</span>-->
+<!--                                <span class="badge badge-warning"><食譜</span>-->
+
                             <a class="card-body">
-                                <a href="#"><p class="card-text">文章標題</p></a>
+                                <a href="#"><p class="card-text">文章標題標題</p></a>
                                 <small class="text-muted">作者名稱</small><hr/>
                                 <div class="d-flex justify-content-between align-items-center">
                                     <div class="btn-group">
                                         <button type="button" class="btn btn-sm btn-outline-secondary">查看全文</button>
                                         <button type="button" class="btn btn-sm btn-outline-secondary">編輯</button>
                                     </div>
-                                    <small class="text-muted">文章上架時間</small>
+                                    <small class="text-muted">文章創立時間></small>
                                 </div>
                             </div>
                         </div>
+                <?php }?>
                     </div>
 
 
