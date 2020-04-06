@@ -46,14 +46,13 @@
             include "../controller/db.php";
             $sql = "SELECT * FROM sweetlife.news n  JOIN sweetlife.author a ON n.author_id = a.author_id WHERE n.id='$page' ";
             $val = $conn->query($sql)->fetch_all(1);
+           // var_dump($val);exit;
          ?>
 <!--        將資料庫取出各欄位的值填入html-->
     <div class="container">
         <div class="blog-header">
-            <img src="img/img/709622.jpg" class="lead" alt="產品圖" width="100%;" >
-
+            <img src="<?php echo '../controller/'.$val[0]['img']?>" class="lead" alt="產品圖" width="60%;" >
                 <h1 class="blog-title"> <?php echo $val[0]["title"] ?> </h1>
-
         </div>
 
         <div class="row">
@@ -65,9 +64,6 @@
                     <?php echo $val[0]["contant"] ?>
 
                 </div><!-- /.blog-post -->
-
-
-
                 <nav>
                     <ul class="pager">
                         <li ><a href="#">Previous</a></li>
