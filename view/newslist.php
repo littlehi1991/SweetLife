@@ -19,11 +19,26 @@
                 <div class="row">
                     <div class="col-md-4">
                         <?php
-                            //陣列取出指定的資料表欄位
                             include "../controller/db.php";
                             require "config.php";
-                            $sql = "SELECT * FROM sweetlife.news n JOIN sweetlife.author a ON n.author_id = a.author_id LIMIT 2";
+                            //取得指定頁次
+                            $cur_page = (empty($_GET['page'])) ? 1 : (int)$_GET['page'];
+                            $per_page = 2;//每頁幾筆資料
+
+                            //計算有開啟閱覽的全部文章筆數
+                            $totol_num = 'SELECT count(*) FROM sweetlife.news WHERE active=1';
+                            //全部有幾頁
+                            $totol_page = ceil($totol_num / $per_page);
+
+                            //每次要從總數量的文章筆數的第幾序位撈出幾筆資料
+                            $sql = "SELECT * FROM sweetlife.news n 
+                                    JOIN sweetlife.author a ON n.author_id = a.author_id 
+                                    ORDER BY create_time DESC 
+                                    LIMIT " .($cur_page - 1) * $per_page. ',' .$per_page;
+                           
+
                             $val = $conn->query($sql)->fetch_all(1);
+
                             //迴圈取出資料表內的鍵跟值
                             foreach ($val as $k => $v){
                             $cate  = '' ;
