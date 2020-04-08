@@ -49,8 +49,8 @@
                 </div><!-- /.blog-post -->
                 <nav>
                     <ul class="pager">
-                        <li ><a href="<?php echo DOMAIN."SweetsLife/view/NewsInside.php?id=". ($page-1);?>">Previous</a></li>
-                        <li><a href="<?php echo DOMAIN."SweetsLife/view/NewsInside.php?id=". ($page+1);?>">Next</a></li>
+                        <li ><a href="<?php echo DOMAIN."SweetsLife/view/NewsInside.php?id=". ($page-1);?>">前一篇文章</a></li>
+                        <li><a href="<?php echo DOMAIN."SweetsLife/view/NewsInside.php?id=". ($page+1);?>">下一篇文章</a></li>
                     </ul>
                 </nav>
 
