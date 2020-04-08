@@ -96,9 +96,12 @@
                              <span aria-hidden="true">上一頁</span>
                          </a>
                      </li>
-                     <li class="page-item"><a class="page-link" href="＃>">1</a></li>
-                     <li class="page-item"><a class="page-link" href="＃>">2</a></li>
-                     <li class="page-item"><a class="page-link" href="＃>">3</a></li>
+                     <?php
+                        for($i=1 ; $i<=$totol_page ; $i++) {
+
+                     ?>
+                     <li class="page-item"><a class="page-link" href="<?php echo DOMAIN ."SweetsLife/view/newslist.php?page=".$i;?>"><?php echo $i;?></a></li>
+                    <?php }?>
                      <li class="page-item">
                          <a class="page-link" href="<?php echo DOMAIN . "SweetsLife/view/newslist.php?page=".(($cur_page +1 >$totol_page ) ? $cur_page :$totol_page ) ;?>" aria-label="Next">
                              <span aria-hidden="true">下一頁</span>
