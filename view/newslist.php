@@ -17,7 +17,7 @@
      <main>
          <nav aria-label="breadcrumb">
              <ol class="breadcrumb">
-                 <li class="breadcrumb-item"><a href="#">Home</a></li>
+                 <li class="breadcrumb-item"><a href="">首頁</a></li>
                  <li class="breadcrumb-item active" aria-current="page">Library</li>
              </ol>
          </nav>
@@ -98,7 +98,6 @@
                      </li>
                      <?php
                         for($i=1 ; $i<=$totol_page ; $i++) {
-
                      ?>
                      <li class="page-item"><a class="page-link" href="<?php echo DOMAIN ."SweetsLife/view/newslist.php?page=".$i;?>"><?php echo $i;?></a></li>
                     <?php }?>
