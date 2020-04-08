@@ -15,13 +15,22 @@
             <?php include "nav.php";?>
         </header>
 <!--        連線資料庫-->
-         <?php
-            $page = $_GET['id'];
-            include "../controller/db.php";
-            $sql = "SELECT * FROM sweetlife.news n  JOIN sweetlife.author a ON n.author_id = a.author_id WHERE n.id='$page' ";
-            $val = $conn->query($sql)->fetch_all(1);
-           // var_dump($val);exit;
-         ?>
+
+        <?php
+        $page = $_GET['id'];
+        include "../controller/db.php";
+        $sql = "SELECT * FROM sweetlife.news n  JOIN sweetlife.author a ON n.author_id = a.author_id WHERE n.id='$page' ";
+        $val = $conn->query($sql)->fetch_all(1);
+        // var_dump($val);exit;
+        ?>
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="#">Home</a></li>
+                <li class="breadcrumb-item"><a href="#">Library</a></li>
+                <li class="breadcrumb-item active" aria-current="page">Data</li>
+            </ol>
+        </nav>
+
 <!--        將資料庫取出各欄位的值填入html-->
     <div class="container">
         <div class="blog-header">
