@@ -15,7 +15,7 @@
                     <a class="nav-link" href="<?php echo DOMAIN."SweetsLife/view/newslist.php"?>">最新消息</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link disabled" href="sweetlifeProgram.php" tabindex="-1" aria-disabled="true">手工甜點</a>
+                    <a class="nav-link " href="<?php echo DOMAIN . "SweetsLife/view/programlist.php";?>" aria-disabled="true">手工甜點</a>
                 </li>
             </ul>
             <form class="form-inline my-2 my-lg-0">

@@ -83,7 +83,7 @@
         </div><!-- /.row -->
 
     </div><!-- /.container -->
-
+    </body>
     <footer class="blog-footer">
         <p style="text-align: center;">
             <a href="#">Back to top</a>
