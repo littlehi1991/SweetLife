@@ -35,7 +35,7 @@
             ?>
             </select><br>
 
-            文章首圖：:<input type="file" name="file" id="file" style="font-size: 16px;"><br />
+            文章首圖：<input type="file" name="file" id="file" style="font-size: 16px;"><br />
             文章內容：<br/>
             <textarea  name="article" style="width:500px;height:300px;"></textarea>
             <br/>
