@@ -30,7 +30,7 @@
                         $val = $conn->query($sql)->fetch_all(1);
                         foreach ($val as $k => $v){
         //                    var_dump($value);exit;?>
-                            <input name="plan[]" type="checkbox"  value="<?php $v['id'];?>"><label><?php echo $v['name'];?></label><br/>
+                            <input name="plan[]" type="checkbox"  value="<?php echo $v['id'];?>"><label><?php echo $v['name'];?></label><br/>
                         <?php } ?>
                     <hr/>
                     專案首圖：
