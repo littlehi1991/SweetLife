@@ -33,12 +33,11 @@
                             <h4 class="my-0 font-weight-normal">SweetLife 經典包</h4>
                         </div>
                         <div class="card-body">
-                            <h1 class="card-title pricing-card-title">專案文字Ａ </h1>
-                            <img src="" alt="產品文字">
+<!--                            <h1 class="card-title pricing-card-title">專案文字Ａ </h1>-->
+                            <img src="img/S__52101127.jpg" alt="產品文字" width="80%;">
                             <ul class="list-unstyled mt-3 mb-4">
                                 <li>容量：大/中/小</li>
                                 <li>期數：3/6/9/12</li>
-                                <li>口味：多/普/精緻</li>
                             </ul>
                             <button type="button" class="btn btn-lg btn-block btn-primary">查看更多</button>
                         </div>
@@ -48,12 +47,11 @@
                             <h4 class="my-0 font-weight-normal">SweetLife 嚐鮮包</h4>
                         </div>
                         <div class="card-body">
-                            <h1 class="card-title pricing-card-title">專案文字Ｂ </h1>
-                            <img src="" alt="產品文字">
+<!--                            <h1 class="card-title pricing-card-title">專案文字Ｂ </h1>-->
+                            <img src="img/S__52101127.jpg" alt="產品文字" width="80%;">
                             <ul class="list-unstyled mt-3 mb-4">
                                 <li>容量：大/中/小</li>
                                 <li>期數：3/6/9/12</li>
-                                <li>口味：多/普/精緻</li>
                             </ul>
                             <button type="button" class="btn btn-lg btn-block btn-primary">查看更多</button>
                         </div>
@@ -63,12 +61,11 @@
                             <h4 class="my-0 font-weight-normal">SweetLife 特別贈禮</h4>
                         </div>
                         <div class="card-body">
-                            <h1 class="card-title pricing-card-title">專案文字Ｃ</h1>
-                            <img src="" alt="產品文字">
+<!--                            <h1 class="card-title pricing-card-title">專案文字Ｃ</h1>-->
+                            <img src="img/S__52101127.jpg" alt="產品文字" width="80%;">
                             <ul class="list-unstyled mt-3 mb-4">
                                 <li>容量：大/中/小</li>
                                 <li>期數：3/6/9/12</li>
-                                <li>口味：多/普/精緻</li>
                             </ul>
                             <button type="button" class="btn btn-lg btn-block btn-primary">查看更多</button>
                         </div>
