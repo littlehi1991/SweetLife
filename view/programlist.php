@@ -35,69 +35,37 @@
                         $val= $conn->query($sql)->fetch_all(1);
                         $psql = "SELECT * FROM sweetlife.plan";
                         $pval = $conn->query($psql)->fetch_all(1);
-//                        此為將資料庫撈出得json 格式轉為陣列的語法
-                        $plan1 = json_decode($val[1]['plan_id']);
-//                        $arr_plan1 = implode(",",$plan1);
-                        $plan2 = json_decode($val[2]['plan_id']);
-//                        $arr_plan2 = implode(",",$plan2);
-                        $plan3 = json_decode($sql[3]['plan)id']);
-//                        $arr_plan3 = implode(",",$plan3);
+                        foreach ($val as $k => $v){
+                            $plan = json_decode($v['plan_id']);
                     ?>
-                    <div class="card mb-4 shadow-sm">
-                        <div class="card-header">
-                            <h4 class="my-0 font-weight-normal"><?php echo $val[1]['name'];?></h4>
-                        </div>
-                        <div class="card-body">
-                            <img src="<?php echo  '../controller/'.$val[1]['main_img'];?>" alt="產品文字" width="80%;">
-                            <ul class="list-unstyled mt-3 mb-4">
-                                <li>容量：
+                                <div class="card mb-4 shadow-sm">
+                                <div class="card-header">
+                                    <h4 class="my-0 font-weight-normal"><?php echo $v['name']; ?></h4>
+                                </div>
+                                <div class="card-body">
+                                <img src="<?php echo '../controller/' . $v['main_img']; ?>" alt="產品文字" width="80%;">
+                                <ul class="list-unstyled mt-3 mb-4">
                                     <?php
-                                    foreach ($plan1 as $k => $v){
-                                        echo $pval[$v]['size'].'/';
-                                    }?>
-                                </li>
-                            </ul>
-                            <button type="button" class="btn btn-lg btn-block btn-primary">查看更多</button>
-                        </div>
-                    </div>
-                    <div class="card mb-4 shadow-sm">
-                        <div class="card-header">
-                            <h4 class="my-0 font-weight-normal"><?php echo $val[2]['name'];?></h4>
-                        </div>
-                        <div class="card-body">
-                            <img src="<?php echo '../controller/'.$val[2]['img_01']?>" alt="產品文字" width="80%;">
-                            <ul class="list-unstyled mt-3 mb-4">
-                                <li>容量：
-                                    <?php
-                                    foreach ($plan2 as $k2 =>$v2){
-                                        echo  $pval[$v2]['size'];
+                                    $size = '';
+                                    $period = '';
+                                    foreach ($plan  as $k2 =>$v2) {
+                                     $size = $pval[$v2]['size'];
+                                     $period = $pval[$v2]['period'];
                                     }
                                     ?>
+                                <li>容量<br/>
+                                    <?php echo $size ;?>
                                 </li>
-                            </ul>
-                            <button type="button" class="btn btn-lg btn-block btn-primary">查看更多</button>
-                        </div>
-                    </div>
-                    <div class="card mb-4 shadow-sm">
-                        <div class="card-header">
-                            <h4 class="my-0 font-weight-normal"><?php echo $val[3]['name'];?></h4>
-                        </div>
-                        <div class="card-body">
-                            <img src="<?php echo '../controller/'.$val[3]['img_02'];?>" alt="產品文字" width="80%;">
-                            <ul class="list-unstyled mt-3 mb-4">
-                                <li>容量：
-                                    <?php
-                                    foreach ($plan3 as $k3 => $v3){
-                                        echo $pval[$v3]['size'].'/';
-                                    }
-                                    ?>
+                                <li>期數：<br/>
+                                    <?php echo $period;?>
                                 </li>
-                            </ul>
-                            <button type="button" class="btn btn-lg btn-block btn-primary">查看更多</button>
+                                </ul>
+                                <button type="button" class="btn btn-lg btn-block btn-primary">查看更多</button>
+                            </div>
                         </div>
+                        <?php }?>
                     </div>
                 </div>
-
             </div>
         </main>
         </body>
