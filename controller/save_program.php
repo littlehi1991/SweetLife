@@ -27,7 +27,7 @@
     //將接到的值寫入資料庫
     include "db.php";
     $sql = "INSERT INTO sweetlife.program (name , plan_id , main_narr , main_img ,img_01 ,narr_01 , img_02 , narr_02 , status) 
-            VALUES ('" . $programname ."', '" . $json_plan . "' , '" . $m_narr . "' , '" . $m_img . "' , '" . $img_01 . "' , '".$narr01 ."' , '" . $img_02 . "' , '" . $narr02 . "' , '". $status."')";
+            VALUES ('" . $programname ."', '" . $json_plan . "' , '" . $m_narr . "' , '" . $img_m . "' , '" . $img_01 . "' , '".$narr01 ."' , '" . $img_02 . "' , '" . $narr02 . "' , '". $status."')";
     $rs = $conn ->query($sql);
 
     if ($rs) {

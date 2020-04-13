@@ -28,6 +28,19 @@
 
             <div class="container">
                 <div class="card-deck mb-3 text-center">
+                    <?php
+//                        include "../controller/db.php";
+//                        require "config.php";
+//                        $sql= "SELECT * FROM sweetlife.program";
+//                        $val= $conn->query($sql)->fetch_all(1);
+////                        var_dump($val);exit;
+//                        var_dump($val[0]['plan_id']);exit;
+//                        $php_plan = json_decode($val[0]['plan_id']);
+//                        $arr_plan = implode(",",$php_plan);
+////                        echo $arr_plan;exit;
+//                        $p_sql = "SELECT * FROM sweetlife.plan WHERE id IN  ( $arr_plan )";
+//                        echo $p_sql;exit;
+//                    ?>
                     <div class="card mb-4 shadow-sm">
                         <div class="card-header">
                             <h4 class="my-0 font-weight-normal">SweetLife 經典包</h4>
@@ -37,7 +50,6 @@
                             <img src="img/S__52101127.jpg" alt="產品文字" width="80%;">
                             <ul class="list-unstyled mt-3 mb-4">
                                 <li>容量：大/中/小</li>
-                                <li>期數：3/6/9/12</li>
                             </ul>
                             <button type="button" class="btn btn-lg btn-block btn-primary">查看更多</button>
                         </div>
@@ -51,7 +63,6 @@
                             <img src="img/S__52101127.jpg" alt="產品文字" width="80%;">
                             <ul class="list-unstyled mt-3 mb-4">
                                 <li>容量：大/中/小</li>
-                                <li>期數：3/6/9/12</li>
                             </ul>
                             <button type="button" class="btn btn-lg btn-block btn-primary">查看更多</button>
                         </div>
@@ -65,7 +76,6 @@
                             <img src="img/S__52101127.jpg" alt="產品文字" width="80%;">
                             <ul class="list-unstyled mt-3 mb-4">
                                 <li>容量：大/中/小</li>
-                                <li>期數：3/6/9/12</li>
                             </ul>
                             <button type="button" class="btn btn-lg btn-block btn-primary">查看更多</button>
                         </div>

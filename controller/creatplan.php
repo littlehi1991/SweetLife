@@ -4,9 +4,11 @@
     $name = $_POST['name'];
     $size = $_POST['size'];
     $price = $_POST['price'];
+    $period = $_POST['period'];
 
 
-    $sql = "INSERT INTO sweetlife.plan( name , size , price )VALUES ('". $name ."','" .$size. "','".$price."')";
+    $sql = "INSERT INTO sweetlife.plan( name , size , price , period )
+            VALUES ('". $name ."','" .$size. "','".$price."','" . $period . "')";
 
 
     $rs = $conn->query($sql);
