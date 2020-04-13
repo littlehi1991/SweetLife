@@ -29,53 +29,69 @@
             <div class="container">
                 <div class="card-deck mb-3 text-center">
                     <?php
-//                        include "../controller/db.php";
-//                        require "config.php";
-//                        $sql= "SELECT * FROM sweetlife.program";
-//                        $val= $conn->query($sql)->fetch_all(1);
-////                        var_dump($val);exit;
-//                        var_dump($val[0]['plan_id']);exit;
-//                        $php_plan = json_decode($val[0]['plan_id']);
-//                        $arr_plan = implode(",",$php_plan);
-////                        echo $arr_plan;exit;
-//                        $p_sql = "SELECT * FROM sweetlife.plan WHERE id IN  ( $arr_plan )";
-//                        echo $p_sql;exit;
-//                    ?>
+                        include "../controller/db.php";
+                        require "config.php";
+                        $sql= "SELECT * FROM sweetlife.program";
+                        $val= $conn->query($sql)->fetch_all(1);
+                        $psql = "SELECT * FROM sweetlife.plan";
+                        $pval = $conn->query($psql)->fetch_all(1);
+//                        此為將資料庫撈出得json 格式轉為陣列的語法
+                        $plan1 = json_decode($val[1]['plan_id']);
+//                        $arr_plan1 = implode(",",$plan1);
+                        $plan2 = json_decode($val[2]['plan_id']);
+//                        $arr_plan2 = implode(",",$plan2);
+                        $plan3 = json_decode($sql[3]['plan)id']);
+//                        $arr_plan3 = implode(",",$plan3);
+                    ?>
                     <div class="card mb-4 shadow-sm">
                         <div class="card-header">
-                            <h4 class="my-0 font-weight-normal">SweetLife 經典包</h4>
+                            <h4 class="my-0 font-weight-normal"><?php echo $val[1]['name'];?></h4>
                         </div>
                         <div class="card-body">
-<!--                            <h1 class="card-title pricing-card-title">專案文字Ａ </h1>-->
-                            <img src="img/S__52101127.jpg" alt="產品文字" width="80%;">
+                            <img src="<?php echo  '../controller/'.$val[1]['main_img'];?>" alt="產品文字" width="80%;">
                             <ul class="list-unstyled mt-3 mb-4">
-                                <li>容量：大/中/小</li>
+                                <li>容量：
+                                    <?php
+                                    foreach ($plan1 as $k => $v){
+                                        echo $pval[$v]['size'].'/';
+                                    }?>
+                                </li>
                             </ul>
                             <button type="button" class="btn btn-lg btn-block btn-primary">查看更多</button>
                         </div>
                     </div>
                     <div class="card mb-4 shadow-sm">
                         <div class="card-header">
-                            <h4 class="my-0 font-weight-normal">SweetLife 嚐鮮包</h4>
+                            <h4 class="my-0 font-weight-normal"><?php echo $val[2]['name'];?></h4>
                         </div>
                         <div class="card-body">
-<!--                            <h1 class="card-title pricing-card-title">專案文字Ｂ </h1>-->
-                            <img src="img/S__52101127.jpg" alt="產品文字" width="80%;">
+                            <img src="<?php echo '../controller/'.$val[2]['img_01']?>" alt="產品文字" width="80%;">
                             <ul class="list-unstyled mt-3 mb-4">
-                                <li>容量：大/中/小</li>
+                                <li>容量：
+                                    <?php
+                                    foreach ($plan2 as $k2 =>$v2){
+                                        echo  $pval[$v2]['size'];
+                                    }
+                                    ?>
+                                </li>
                             </ul>
                             <button type="button" class="btn btn-lg btn-block btn-primary">查看更多</button>
                         </div>
                     </div>
                     <div class="card mb-4 shadow-sm">
                         <div class="card-header">
-                            <h4 class="my-0 font-weight-normal">SweetLife 特別贈禮</h4>
+                            <h4 class="my-0 font-weight-normal"><?php echo $val[3]['name'];?></h4>
                         </div>
                         <div class="card-body">
-<!--                            <h1 class="card-title pricing-card-title">專案文字Ｃ</h1>-->
-                            <img src="img/S__52101127.jpg" alt="產品文字" width="80%;">
+                            <img src="<?php echo '../controller/'.$val[3]['img_02'];?>" alt="產品文字" width="80%;">
                             <ul class="list-unstyled mt-3 mb-4">
-                                <li>容量：大/中/小</li>
+                                <li>容量：
+                                    <?php
+                                    foreach ($plan3 as $k3 => $v3){
+                                        echo $pval[$v3]['size'].'/';
+                                    }
+                                    ?>
+                                </li>
                             </ul>
                             <button type="button" class="btn btn-lg btn-block btn-primary">查看更多</button>
                         </div>
