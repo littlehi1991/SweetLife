@@ -16,7 +16,7 @@
         # 將檔案移至指定位置
         move_uploaded_file($nfile, $dest);
     }
-   include "../controller/db.php";
+   include "db.php";
     $sql = "INSERT INTO sweetlife.news (create_time, title, category, author_id, img, contant)
      VALUES  ('" . $date . "', '" . $articletitle . "', '" . $category . "', '" . $author . "', '" . $dest . "', '" . $ararticle . "')";
 
