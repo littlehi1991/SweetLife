@@ -46,18 +46,19 @@
                                 <img src="<?php echo '../controller/' . $v['main_img']; ?>" alt="產品文字" width="80%;">
                                 <ul class="list-unstyled mt-3 mb-4">
                                     <?php
+                                    //.= 字串相加，將foreach出來的值用字串相加後丟入變數中
                                     $size = '';
                                     $period = '';
                                     foreach ($plan  as $k2 =>$v2) {
-                                     $size = $pval[$v2]['size'];
-                                     $period = $pval[$v2]['period'];
+                                     $size .= $pval[$v2]['size'].'/';
+                                     $period .= $pval[$v2]['period'].'/' ;
                                     }
                                     ?>
                                 <li>容量<br/>
-                                    <?php echo $size ;?>
+                                    <?php echo rtrim($size, "/") ;?>
                                 </li>
                                 <li>期數：<br/>
-                                    <?php echo $period;?>
+                                    <?php echo rtrim($period,'/');?>
                                 </li>
                                 </ul>
                                 <button type="button" class="btn btn-lg btn-block btn-primary">查看更多</button>
