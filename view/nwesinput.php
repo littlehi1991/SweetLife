@@ -64,7 +64,7 @@
                         <br/>
                         <br/>
                         <input type="submit" value="送出文章" />
-                    </form>
+            </form>
         </main>
     </body>
 </html>

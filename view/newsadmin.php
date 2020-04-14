@@ -39,7 +39,9 @@
                             require 'config.php';
                             $sql = "SELECT * FROM sweetlife.news n JOIN sweetlife.author a 
                                      ON n.author_id = a.author_id  ";
-                            $val = $conn->query($sql)->fetch_all(1)
+                            $val = $conn->query($sql)->fetch_all(1);
+                            $asql ='SELECT * FROM sweetlife.author';
+                            $aval = $conn->query($asql)->fetch_all(1);
                             ?>
                         <tr>
                             <th>作者名稱</th>
@@ -48,11 +50,13 @@
                         </tr>
                         </thead>
                         <tbody>
-                        <?php foreach ($val as $k =>$v) {?>
+                            <?php
+                            foreach ($aval as $k => $v){
+                            ?>
                         <tr>
                             <td><?php echo $v['a_name'];?></td>
                             <td><?php echo $v['intro'];?></td>
-                            <td><a href="#" >編輯</a></td>
+                            <td><a href="<?php echo DOMAIN.'Sweetslife/view/authoredit.php?id='.$v['author_id'];?>" >編輯</a>｜<a href="#">刪除</a> </td>
                             <?php }?>
                         </tr>
                         </tbody>
@@ -93,7 +97,7 @@
                                     $active = '關閉';
                                 break;
                             }
-                            $val[k]['active'] = $active;
+                            $val[$k]['active'] = $active;
                         ?>
                         <tbody>
                         <tr>
@@ -102,7 +106,8 @@
                             <td><?php echo $cate;?></td>
                             <td><?php echo $v['a_name'];?></td>
                             <td><?php echo $active;?></td>
-                            <td><a href="#" >編輯</a></td>
+                            <td><a href="<?php echo DOMAIN.'Sweetslife/view/newsedit.php?id='.$v['id'];?>" >編輯</a>｜<a href="#">刪除</a> </td>
+
                             <?php }?>
                         </tr>
                         </tbody>

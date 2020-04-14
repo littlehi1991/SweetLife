@@ -24,7 +24,9 @@
             <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
                 <h1 class="h2">商品管理</h1>
             </div>
-            <a href="<?php echo DOMAIN . 'Sweetslife/view/programinput.php';?>"><p>新增商品</p></a>
+            <a href="<?php echo DOMAIN . 'Sweetslife/view/programinput.php';?>">
+                <button type="button" class="btn btn-primary">新增文章</button>
+            </a>
             <main style="margin: 1%;">
                 <div class="table-responsive">
                     <table class="table table-striped table-sm">
@@ -68,7 +70,7 @@
                                     echo rtrim($period,'/');
                                 ?>
                             </td>
-                            <td><a href="#" >編輯</a></td>
+                            <td><a href="#" >編輯</a>｜<a href="#">刪除</a> </td>
                             <?php }?>
                         </tr>
                         </tbody>
