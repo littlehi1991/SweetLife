@@ -23,14 +23,8 @@
         <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4">
             <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
                 <h1 class="h2">商品管理</h1>
-                <div style="margin:2px;float: right;">
-                    <select name="time">
-                        <option value="none">商品管理</option>
-                        <option value="few">方案管理</option>
-                    </select><br>
-                </div>
             </div>
-
+            <a href="<?php echo DOMAIN . 'Sweetslife/view/programinput.php';?>"><p>新增商品</p></a>
             <main style="margin: 1%;">
                 <div class="table-responsive">
                     <table class="table table-striped table-sm">
@@ -39,11 +33,11 @@
                             <th>商品名稱</th>
                             <th>容量</th>
                             <th>期數</th>
+                            <th>編輯</th>
                         </tr>
                         </thead>
                         <?php
                         include '../controller/db.php';
-                        require 'config.php';
                         $sql = "SELECT * FROM sweetlife.program  ";
                         $val = $conn->query($sql)->fetch_all(1);
 //                        $plan =json_decode($val[0]['plan_id']);
@@ -83,11 +77,7 @@
             </main>
 
     </body>
-    <footer class="blog-footer">
-        <p style="text-align: center;">
-            <a href="#">Back to top</a>
-        </p>
-    </footer>
+
 
 
     <!-- Bootstrap core JavaScript

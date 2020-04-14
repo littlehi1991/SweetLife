@@ -15,9 +15,20 @@
                   require "config.php";
             ?>
         </header>
-        <main style="padding: 1%; ">
-            <div style="padding: 0.5%; border: 1px black dotted;">
-                <h2>新增商品</h2>
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="">首頁</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">新增商品頁</li>
+                </ol>
+            </nav>
+
+            <?php include 'navadmin.php';?>
+
+            <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4">
+                <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+                    <h1 class="h2">新增商品</h1>
+                </div>
+            <div >
                 <form method="POST" action="../controller/save_program.php" enctype="multipart/form-data">
                     請輸入專案名稱：
                     <input type="text" name="programname">

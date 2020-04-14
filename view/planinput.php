@@ -13,6 +13,13 @@
         <header>
             <?php include "nav.php";?>
         </header>
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="">首頁</a></li>
+                <li class="breadcrumb-item active" aria-current="page">新增商品頁</li>
+            </ol>
+        </nav>
+        <?php include 'navadmin.php';?>
         <main style="margin: 2%;">
             <h2>新增方案</h2>
             <form method="POST" action=" ../controller/creatplan.php">
