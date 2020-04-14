@@ -80,7 +80,7 @@
                             </ul>
                             <div class="card-body">
                                 <a href="<?php echo DOMAIN . "SweetsLife/view/NewsInside.php?id=".$v['id'];?>" class="card-link">閱讀全文</a>
-                                <a href="#" class="card-link">編輯</a>
+                                <a href="<?php echo DOMAIN. "SweetsLife/view/newsadmin.php";?>" class="card-link">編輯</a>
                             </div>
                         </div>
                     </div>
