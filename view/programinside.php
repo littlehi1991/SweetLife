@@ -21,10 +21,21 @@
             </ol>
         </nav>
         <body>
+            <?php
+                $page = $_GET['id'];
+                include '../controller/db.php';
+                require 'config.php';
+                $sql = "SELECT * FROM sweetlife.program WHERE id IN ('$page')";
+                $val = $conn ->query($sql)->fetch_all(1);
+                $plan = json_decode($val[0]['plan_id']);
+                $plann = implode(',',$plan);
+                $psql = "SELECT * FROM sweetlife.plan WHERE id IN ($plann)";
+                $pval = $conn->query($psql)->fetch_all(1);
+            ?>
             <div class="position-relative overflow-hidden p-3 p-md-5 m-md-3 text-center bg-light">
                     <div class="col-md-5 p-lg-5 mx-auto my-5">
-                        <h1 class="display-4 font-weight-normal">方案名稱</h1>
-                        <p class="lead font-weight-normal">文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字文字.</p>
+                        <h1 class="display-4 font-weight-normal"><?php echo $val[0]['name'];?></h1>
+                        <p class="lead font-weight-normal"><?php echo $val[0]['main_narr'];?>.</p>
                         <div class="accordion" id="accordionExample">
                             <div class="card">
                                 <div class="card-header" id="headingOne">
@@ -41,19 +52,20 @@
                                         <div class="form-group">
                                             <label for="exampleFormControlSelect1">盒子尺寸</label>
                                             <select class="form-control" id="exampleFormControlSelect1">
-                                                <option>大750g</option>
-                                                <option>中500g</option>
-                                                <option>小200g</option>
+                                                <?php
+                                                foreach ($pval as $k => $v){
+                                               ?>
+                                                <option><?php echo $v['size'];?></option>
+                                                <?php  }?>
                                             </select>
                                         </div>
                                         <div class="form-group">
-                                            <label for="exampleFormControlSelect2">配送期數</label>
-                                            <select multiple class="form-control" id="exampleFormControlSelect2">
-                                                <option>1</option>
-                                                <option>3</option>
-                                                <option>6</option>
-                                                <option>9</option>
-                                                <option>12</option>
+                                            <label for="exampleFormControlSelect1">配送期數</label>
+                                            <select class="form-control" id="exampleFormControlSelect1">
+                                                <?php
+                                                foreach ($pval as $k => $v){ ?>
+                                                    <option><?php echo $v['period'];?></option>
+                                                <?php }?>
                                             </select>
                                         </div>
                                         <div class="form-group">
@@ -78,10 +90,10 @@
             <div class="row featurette">
                 <div class="col-md-7 order-md-2">
                     <h2 class="featurette-heading">文字文字文字文字 </h2>
-                    <p class="lead">來一點商品描述吧ＸＤＤ.</p>
+                    <p class="lead"><?php echo $val[0]['narr_02'];?></p>
             </div>
                 <div class="col-md-5 order-md-1">
-                    <img src="img/S__52101127.jpg" class="lead" alt="產品圖" width="80%;" >
+                    <img src="<?php echo '../controller/'.$val[0]['img_01'];?>" class="lead" alt="產品圖" width="80%;" >
                 </div>
             </div>
 
@@ -90,10 +102,10 @@
             <div class="row featurette">
                 <div class="col-md-7">
                     <h2 class="featurette-heading">And lastly, this one. <span class="text-muted">Checkmate.</span></h2>
-                    <p class="lead">Donec ullamcorper nulla non metus auctor fringilla. Vestibulum id ligula porta felis euismod semper. Praesent commodo cursus magna, vel scelerisque nisl consectetur. Fusce dapibus, tellus ac cursus commodo.</p>
+                    <p class="lead"><?php echo $val[0]['narr_02'];?>></php>
                 </div>
                 <div class="col-md-5">
-                    <img src="img/709621.jpg" class="lead" alt="產品圖" width="80%;" >
+                    <img src="<?php echo '../controller/'.$val[0]['img_02'];?>" class="lead" alt="產品圖" width="80%;" >
                 </div>
             </div>
         </div>

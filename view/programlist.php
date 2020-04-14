@@ -50,8 +50,8 @@
                                     $size = '';
                                     $period = '';
                                     foreach ($plan  as $k2 =>$v2) {
-                                     $size .= $pval[$v2]['size'].'/';
-                                     $period .= $pval[$v2]['period'].'/' ;
+                                     $size .= '&nbsp'.$pval[$v2]['size'].'/';
+                                     $period .='&nbsp'. $pval[$v2]['period'].'/' ;
                                     }
                                     ?>
                                 <li>容量<br/>
@@ -61,7 +61,7 @@
                                     <?php echo rtrim($period,'/');?>
                                 </li>
                                 </ul>
-                                <button type="button" class="btn btn-lg btn-block btn-primary">查看更多</button>
+                                <a href="<?php echo DOMAIN ."SweetsLife/view/programinside.php?id=".$v['id'];?>"><button type="button" class="btn btn-lg btn-block btn-primary">查看更多</button></a>
                             </div>
                         </div>
                         <?php }?>
