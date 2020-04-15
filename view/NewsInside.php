@@ -63,13 +63,15 @@
                      </div>
                 <div class="sidebar-module">
                     <h4>我們想推薦給你</h4>
-
                     <?php
+                    $res = '';
+                    foreach ($val as $k => $v){
+                       $res = $v['type'];
+                    }
                     include "../controller/db.php";
                     require "config.php";
-                    $sql = "SELECT * FROM sweetlife.news WHERE category =3  LIMIT 5";
+                    $sql = "SELECT * FROM sweetlife.news n JOIN sweetlife.type t ON n.type = t.t_id WHERE t.t_id ='$res'";
                     $val = $conn->query($sql)->fetch_all(1);
-//                    $id = $val[0]['id'];
                     foreach($val as $k =>$v){
                         ?>
                     <ol class="list-unstyled">

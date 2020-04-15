@@ -29,23 +29,48 @@
                 <h1 class="h2">文章編輯</h1>
             </div>
             <form method="POST" action="../controller/update_article.php" enctype="multipart/form-data" >
-                請選擇上架日期：
                 <?php
                     $page = $_GET['id'];
                     include '../controller/db.php';
                     $sql = "SELECT * FROM sweetlife.news n JOIN sweetlife.author a ON n.author_id = a.author_id WHERE n.id = '$page'";
                     $val =$conn->query($sql)->fetch_all(1);
                 ?>
-                <input name="date" type="date" placeholder="123456" >
+                文章上架日期：<?php echo $val[0]['create_time']?>
                 <br/>
-                文章標題：<input type="text" name="articletitle" style="width: 300px;" placeholder="12345"><br>
+                狀態：
+<!--                <input type="radio" name="action" value="Taipei"> 開啟-->
+<!--                <input type="radio" name="action" value="Taoyuan">關閉<br>-->
+                <?php
+                    switch ($val[0]['active']){
+                        case '1':
+                            echo '<input type="radio" name="active" value="1" checked="true">開啟'.'&nbsp';
+                            echo '<input type="radio" name="active" value="0">關閉';
+                            break;
+                        case '0':
+                            echo '<input type="radio" name="active" value="1"">開啟';
+                            echo '<input type="radio" name="active"  value="0" checked="true">關閉'.'&nbsp';
+                            break;
+                    }?>
+                <br/>
+                文章標題：<input type="text" name="title" style="width: 300px;" value="<?php echo $val[0]['title']?>>"><br>
                 文章類別：
+
                 <select name="category"style="height:30px; font-size: 14px;"/>
-                <option value=""><?php echo $v['category']?></option>
+                    <?php
+                    $nsql = "SELECT * FROM sweetlife.news";
+                    $nval = $conn->query($nsql)->fetch_all(1);
+                    $del_1 = '1';
+                    $del_2 = '2';
+                    $del_3 = '3';
+                        foreach ($nval as $k => $v){
+                            if ($v['category'] == $del_1) {
+                                unset($nval[$k]);
+                            }
+                            echo "<option value=".$v['category']."selected >".$type[$v['category']]."</option>";
+                        }
+                    ?>
                 </select><br>
-
                 作者：
-
                 <select name="author" style="height:30px; font-size: 14px;"/>
                 <option value=" "></option>
 
@@ -53,7 +78,7 @@
 
                 文章首圖：<input type="file" name="file" id="file" style="font-size: 16px;"><br />
                 文章內容：<br/>
-                <textarea  name="article" style="width:500px;height:300px;"></textarea>
+                <textarea  name="article" style="width:500px;height:300px;"><?php echo $val[0]['contant'];?></textarea>
                 <br/>
                 <br/>
                 <input type="submit" value="送出文章" />
