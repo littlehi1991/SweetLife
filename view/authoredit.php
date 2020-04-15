@@ -35,12 +35,15 @@
             $val = $conn->query($sql)->fetch_all(1);
 //            var_dump($val);exit;
             ?>
-            <form method="POST" action=" ../controller/creatauthor.php">
-                請輸入作者名稱：<input type="text" name="name" placeholder="<?php echo $val[0]['a_name'];?>">
+            <form method="POST" action=" ../controller/authorupdate.php">
+<!--                使用hidden的方式該頁id一同post近update的那隻程式中-->
+                <input type="hidden" name="page" value="<?php echo $page;?>">
+                請輸入作者名稱：<input type="text" name="name" value="<?php echo $val[0]['a_name'];?>">
                 <br/><br/>
-                請輸入作者敘述：<textarea  name="intro" placeholder="<?php echo $val[0]['intro']    ;?>" style="width:200px;height:50px;"></textarea>
+                請輸入作者敘述：<textarea type="'text"  name="intro"  style="width:200px;height:50px;"><?php echo $val[0]['intro']  ;?></textarea>
                 <br><br>
                 <input type="submit" value="送出資料">
+                <button type="button" class="btn btn-link"onclick="history.back()" value="回到上一頁" ">回上頁</button>
             </form>
         </main>
     </body>

@@ -21,4 +21,4 @@
         echo "<script>alert('新增失敗!');location.href='../view/planinput.php';</script>";
     }
 
-$conn->close();
+    $conn->close();

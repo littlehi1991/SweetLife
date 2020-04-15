@@ -44,6 +44,7 @@
                             $aval = $conn->query($asql)->fetch_all(1);
                             ?>
                         <tr>
+                            <th>編號</th>
                             <th>作者名稱</th>
                             <th>作者描述</th>
                             <th>編輯</th>
@@ -54,6 +55,7 @@
                             foreach ($aval as $k => $v){
                             ?>
                         <tr>
+                            <td><?php echo $v['author_id'];?></td>
                             <td><?php echo $v['a_name'];?></td>
                             <td><?php echo $v['intro'];?></td>
                             <td><a href="<?php echo DOMAIN.'Sweetslife/view/authoredit.php?id='.$v['author_id'];?>" >編輯</a>｜<a href="#">刪除</a> </td>
@@ -65,6 +67,7 @@
                     <table class="table table-striped table-sm">
                         <thead>
                         <tr>
+                            <th>編號</th>
                             <th>文章上架時間</th>
                             <th>文章標題</th>
                             <th>文章類別</th>
@@ -101,6 +104,7 @@
                         ?>
                         <tbody>
                         <tr>
+                            <td><?php echo $v['id'];?></td>
                             <td><?php echo $v['create_time'];?></td>
                             <td><?php echo $v['title'];?></td>
                             <td><?php echo $cate;?></td>
