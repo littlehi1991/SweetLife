@@ -38,41 +38,38 @@
                             //全部有幾頁
                             $totol_page = ceil($pages[0]['count(*)']/ $per_page);
 //
+
+
                             //每次要從總數量的文章筆數的第幾序位撈出幾筆資料
-                            $sql = "SELECT * FROM sweetlife.news n 
+                            $sql = "SELECT n.id,n.title,n.img,n.create_time,a.a_name,t.n_type  FROM sweetlife.news n 
                                     JOIN sweetlife.author a ON n.author_id = a.author_id 
+                                    JOIN sweetlife.type t ON n.type = t.id 
                                     ORDER BY create_time DESC 
                                     LIMIT " .($cur_page - 1) * $per_page. ',' .$per_page;
-
-
+//                            echo $sql;exit;
                             $val = $conn->query($sql)->fetch_all(1);
 
                             //迴圈取出資料表內的鍵跟值
                             foreach ($val as $k => $v){
-                            $cate  = '' ;
-                            $class = '' ;
-                            switch($v['category']){
-                                   case '1':
-                                    $cate = "活動";
-                                    $class = "badge badge-danger";
-                                    break;
-                                case '2':
-                                    $cate = "健康";
-                                    $class = "badge badge-success";
-                                    break;
-                                default :
-                                    $cate = "食譜";
-                                    $class ="badge badge-warning";
-                                    break;
-                            }
-                            $val[$k]['category'] = $cate;
+                                $class = '' ;
+                                switch($v['type']){
+                                    case '1':
+                                        $class = "badge badge-danger";
+                                        break;
+                                    case '2':
+                                        $class = "badge badge-success";
+                                        break;
+                                    default :
+                                        $class ="badge badge-warning";
+                                        break;
+                                }
                             ?>
 
                         <div class="card" style="width: 18rem;">
-                            <a href="<?php echo DOMAIN . "SweetsLife/view/NewsInside.php?id=".$v['id'];?>" ><img src=<?php echo "../controller/".$v['img']?> class="card-img-top" alt="..."></a>
-                            <span class="<?php echo $class;?>"><?php echo $cate; ?></span>
+                            <a href="<?php echo DOMAIN . "SweetsLife/view/NewsInside.php?id=".$v['n_id'];?>" ><img src=<?php echo "../controller/".$v['img']?> class="card-img-top" alt="..."></a>
+                            <span class="<?php echo $class;?>"><?php echo $v['n_type']; ?></span>
                             <div class="card-body">
-                                <a href="<?php echo DOMAIN."Sweetslife/view/NewsInside.php?id=".$v['id'];?> "><h3 class="card-title"><?php echo $v['title'];?></h3></a>
+                                <a href="<?php echo DOMAIN."Sweetslife/view/NewsInside.php?id=".$v['n_id'];?> "><h3 class="card-title"><?php echo $v['title'];?></h3></a>
                             </div>
                             <ul class="list-group list-group-flush">
                                 <li class="list-group-item"><?php echo $v['a_name'];?></li>
@@ -102,7 +99,7 @@
                      <li class="page-item"><a class="page-link" href="<?php echo DOMAIN ."SweetsLife/view/newslist.php?page=".$i;?>"><?php echo $i;?></a></li>
                     <?php }?>
                      <li class="page-item">
-                         <a class="page-link" href="<?php echo DOMAIN . "SweetsLife/view/newslist.php?page=".(($cur_page +1 >$totol_page ) ? $cur_page :$totol_page ) ;?>" aria-label="Next">
+                         <a class="page-link" href="<?php echo DOMAIN . "SweetsLife/view/newslist.php?page=".(($cur_page <$totol_page ) ? $cur_page+1 :$totol_page ) ;?>" aria-label="Next">
                              <span aria-hidden="true">下一頁</span>
                          </a>
                      </li>
