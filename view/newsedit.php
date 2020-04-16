@@ -32,7 +32,10 @@
                 <?php
                     $page = $_GET['id'];
                     include '../controller/db.php';
-                    $sql = "SELECT * FROM sweetlife.news n JOIN sweetlife.author a ON n.author_id = a.author_id WHERE n.id = '$page'";
+                    $sql = "SELECT n.id AS nid , title ,img ,contant , type , create_time , n.author_id AS naid , active , a.author_id AS aid , a_name , t.*  FROM sweetlife.news n 
+                                JOIN sweetlife.author a ON n.author_id = a.author_id
+                                JOIN sweetlife.type t ON n.type = t.id
+                                WHERE n.id = '$page'";
                     $val =$conn->query($sql)->fetch_all(1);
                 ?>
                 文章上架日期：<?php echo $val[0]['create_time']?>
@@ -55,18 +58,10 @@
                 文章標題：<input type="text" name="title" style="width: 300px;" value="<?php echo $val[0]['title']?>>"><br>
                 文章類別：
 
-                <select name="category"style="height:30px; font-size: 14px;"/>
+                <select name="type" style="height:30px; font-size: 14px;"/>
                     <?php
-                    $nsql = "SELECT * FROM sweetlife.news";
-                    $nval = $conn->query($nsql)->fetch_all(1);
-                    $del_1 = '1';
-                    $del_2 = '2';
-                    $del_3 = '3';
-                        foreach ($nval as $k => $v){
-                            if ($v['category'] == $del_1) {
-                                unset($nval[$k]);
-                            }
-                            echo "<option value=".$v['category']."selected >".$type[$v['category']]."</option>";
+                        foreach ($val as $k => $v){
+                            echo "<option value=".$v['type']."selected >".$v['n_type']."</option>";
                         }
                     ?>
                 </select><br>
