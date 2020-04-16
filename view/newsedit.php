@@ -60,28 +60,39 @@
 
                 <select name="type" style="height:30px; font-size: 14px;"/>
                     <?php
-                        $thistype=$val[0]['type'];
+//                        $thistype=$val[0]['type'];
                         $tsql = "SELECT * FROM sweetlife.type";
                         $tval = $conn ->query($tsql)->fetch_all(1);
                         foreach ($tval as $k => $v){
-                            if($thistype = $v['id']){
-                                var_dump($thistype);
-                                var_dump($v['id']);
-                                ?>
+                            if((int)$val[0]['type'] === (int)$v['id']){?>
                                 <option value="<?php echo $v['id'];?>" selected><?php echo $v['n_type'];?></option>
                             <?php }else{ ?>
                                 <option value="<?php echo $v['id'];?>" <?php echo $v['n_type'];?> ></option>
-                    <?php        }
-                        }
+                    <?php          }
+                             }
                     ?>
                 </select><br>
                 作者：
                 <select name="author" style="height:30px; font-size: 14px;"/>
+                    <?php
+                        $asql = "SELECT * FROM sweetlife.author";
+                        $aval = $conn->query($asql)->fetch_all(1);
+                        foreach ($aval as $k => $v){
+                            if((int)$val[0]['naid'] === (int)$v['author_id']){?>
+                                <option value="<?php echo $v['author_id'];?>" selected><?php echo $v['a_name'];?></option>
+                            <?php }else{?>
+                                <option value="<?php echo $v['author_id'];?>"><?php echo $v['a_name'];?></option>
+                    <?php       }
+                            }
+                    ?>
                 <option value=" "></option>
 
                 </select><br>
 
-                文章首圖：<input type="file" name="file" id="file" style="font-size: 16px;"><br />
+                文章首圖：<input type="file" name="file"  style="font-size: 16px;" value="<?php echo "../controller/".$val[0]['img'];?>">
+                <br/>
+                        <img src="<?php echo "../controller/".$val[0]['img'];?>" alt="文章圖片" title="文章圖片" style="width: 300px;">
+                <br />
                 文章內容：<br/>
                 <textarea  name="article" style="width:500px;height:300px;"><?php echo $val[0]['contant'];?></textarea>
                 <br/>
