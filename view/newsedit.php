@@ -55,13 +55,23 @@
                             break;
                     }?>
                 <br/>
-                文章標題：<input type="text" name="title" style="width: 300px;" value="<?php echo $val[0]['title']?>>"><br>
+                文章標題：<input type="text" name="title" style="width: 300px;" value="<?php echo $val[0]['title'];?>"><br>
                 文章類別：
 
                 <select name="type" style="height:30px; font-size: 14px;"/>
                     <?php
-                        foreach ($val as $k => $v){
-                            echo "<option value=".$v['type']."selected >".$v['n_type']."</option>";
+                        $thistype=$val[0]['type'];
+                        $tsql = "SELECT * FROM sweetlife.type";
+                        $tval = $conn ->query($tsql)->fetch_all(1);
+                        foreach ($tval as $k => $v){
+                            if($thistype = $v['id']){
+                                var_dump($thistype);
+                                var_dump($v['id']);
+                                ?>
+                                <option value="<?php echo $v['id'];?>" selected><?php echo $v['n_type'];?></option>
+                            <?php }else{ ?>
+                                <option value="<?php echo $v['id'];?>" <?php echo $v['n_type'];?> ></option>
+                    <?php        }
                         }
                     ?>
                 </select><br>
