@@ -33,7 +33,6 @@
             include "../controller/db.php";
             $sql = "SELECT * FROM sweetlife.author WHERE author_id ='$page'";
             $val = $conn->query($sql)->fetch_all(1);
-//            var_dump($val);exit;
             ?>
             <form method="POST" action=" ../controller/authorupdate.php">
 <!--                使用hidden的方式該頁id一同post近update的那隻程式中-->

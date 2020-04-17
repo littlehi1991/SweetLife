@@ -44,6 +44,7 @@
                             </tr>
                         </thead>
                         <?php
+                            require '../view/config.php';
                             include '../controller/db.php';
                             $sql = "SELECT * FROM sweetlife.program  ";
                             $val = $conn->query($sql)->fetch_all(1);
@@ -58,7 +59,7 @@
                                 <td><?php echo $v['size'];?></td>
                                 <td><?php echo $v['price'];?></td>
                                 <td><?php echo $v['period'];?></td>
-                                <td><a href="<?php echo DOMAIN . 'SweetsLife/vies/palnedit.php?id='.$v['id']?>" >編輯</a>｜<a href="">刪除</a> </td>
+                                <td><a href="<?php echo DOMAIN.'Sweetslife/view/planedit.php?id='.$v['id'];?>" >編輯</a>｜<a href="">刪除</a> </td>
                             </tr>
                         </tbody>
                         <?php }?>
@@ -97,7 +98,7 @@
                                     echo rtrim($period,'/');
                                 ?>
                             </td>
-                            <td><a href="<?php echo DOMAIN . 'SweetsLife/vies/programedit.php?id='.$v['id']?>" >編輯</a>｜<a href="#">刪除</a> </td>
+                            <td><a href="<?php echo DOMAIN .'Sweetslife/view/programedit.php?id='.$v['id'];?>" >編輯</a>｜<a href="#">刪除</a> </td>
                             <?php }?>
                         </tr>
                         </tbody>

@@ -25,16 +25,17 @@
             <form method="POST" action=" ../controller/creatplan.php">
                 請輸入方案名稱：<input type="text" name="name">
                 <hr/>
-                請輸入份量：<input type="text" name="size" style="width:100px;">
-                請輸入金額：<input type="text" name="price" style="width: 100px; "><br/><br/>
+                請輸入份量：<input type="text" name="size" style="width:100px;">g<br/><br/>
                 請選擇期數：共
                 <select name="period">
-                    <option value="1">一</option>
-                    <option value="3">三</option>
-                    <option value="4">四</option>
-                    <option value="6">六</option>
-                    <option value="12">十二</option>
+                    <?php $arr =array(1,3,4,6,12);
+                    foreach ($arr as $k =>$v){?>
+
+                        <option value="<?php echo $v;?>" ><?php echo $v;?></option>
+
+                    <?php } ?>
                 </select>期<br><br/>
+                請輸入每期金額：<input type="text" name="price" style="width: 100px; ">元<br/><br/>
                 <input type="submit" value="送出資料">
             </form>
         </main>

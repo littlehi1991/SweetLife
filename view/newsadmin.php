@@ -59,7 +59,7 @@
                             <td><?php echo $v['author_id'];?></td>
                             <td><?php echo $v['a_name'];?></td>
                             <td><?php echo $v['intro'];?></td>
-                            <td><a href="<?php echo DOMAIN.'Sweetslife/view/authoredit.php?id='.$v['aid'];?>" >編輯</a>｜<a href="#">刪除</a> </td>
+                            <td><a href="<?php echo DOMAIN.'Sweetslife/view/authoredit.php?id='.$v['author_id'];?>" >編輯</a>｜<a href="#">刪除</a> </td>
                             <?php }?>
                         </tr>
                         </tbody>
