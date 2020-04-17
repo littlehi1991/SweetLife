@@ -83,8 +83,8 @@
                             <td>
                                 <?php
                                     $size = '';
-                                    foreach ($plan as $k => $v){
-                                        $size .= '&nbsp'.$pval[$v]['size'].'/';
+                                    foreach ($plan as $k1 => $v1){
+                                        $size .= '&nbsp'.$pval[$v1]['size'].'/';
                                     }
                                     echo rtrim($size,'/');
                                 ?>
@@ -92,12 +92,15 @@
                             <td>
                                 <?php
                                     $period = '';
-                                    foreach ($plan as $k => $v){
-                                        $period .= '&nbsp'.$pval[$v]['period'].'/';
+                                    foreach ($plan as $k1 => $v1){
+                                        $period .= '&nbsp'.$pval[$v1]['period'].'/';
                                     }
                                     echo rtrim($period,'/');
                                 ?>
                             </td>
+                                <?php
+
+                                ?>
                             <td><a href="<?php echo DOMAIN .'Sweetslife/view/programedit.php?id='.$v['id'];?>" >編輯</a>｜<a href="#">刪除</a> </td>
                             <?php }?>
                         </tr>
