@@ -9,10 +9,11 @@
 
 
     if ($rs) {
-        echo "<script>alert('修改成功!');location.href='../view/newsadmin.php';</script>";
+        echo "<script>alert('修改成功!');location.href='../view/newsadmin.php'</script>";
         //todo 錯誤處理
     }else{
         echo "<script>alert('更新失敗!');location.href='../view/authoredit.php?id='.$id;</script>";
     }
 
     $conn->close();
+

@@ -27,25 +27,52 @@
             <a href="<?php echo DOMAIN . 'Sweetslife/view/programinput.php';?>">
                 <button type="button" class="btn btn-primary">新增文章</button>
             </a>
-            <main style="margin: 1%;">
+            <a href="<?php echo DOMAIN. "SweetsLife/view/planinput.php";?>">
+                <button type="button" class="btn btn-info">新增方案</button>
+            </a>
+            <div style="margin: 1%;">
                 <div class="table-responsive">
                     <table class="table table-striped table-sm">
                         <thead>
-                        <tr>
-                            <th>商品名稱</th>
-                            <th>容量</th>
-                            <th>期數</th>
-                            <th>編輯</th>
-                        </tr>
+                            <tr>
+                                <th>編號</th>
+                                <th>方案名稱</th>
+                                <th>開放份量</th>
+                                <th>單份金額</th>
+                                <th>開放期數</th>
+                                <th>編輯</th>
+                            </tr>
                         </thead>
                         <?php
-                        include '../controller/db.php';
-                        $sql = "SELECT * FROM sweetlife.program  ";
-                        $val = $conn->query($sql)->fetch_all(1);
-//                        $plan =json_decode($val[0]['plan_id']);
-//                        $plann = implode(',',$plan);
-                        $psql = "SELECT * FROM sweetlife.plan ";
-                        $pval = $conn ->query($psql)->fetch_all(1);
+                            include '../controller/db.php';
+                            $sql = "SELECT * FROM sweetlife.program  ";
+                            $val = $conn->query($sql)->fetch_all(1);
+                            $psql = "SELECT * FROM sweetlife.plan ";
+                            $pval = $conn ->query($psql)->fetch_all(1);
+                         ?>
+                        <tbody>
+                            <tr>
+                                <?php foreach ($pval as $k => $v){ ?>
+                                <td><?php echo $v['id'];?></td>
+                                <td><?php echo $v['name'];?></td>
+                                <td><?php echo $v['size'];?></td>
+                                <td><?php echo $v['price'];?></td>
+                                <td><?php echo $v['period'];?></td>
+                                <td><a href="<?php echo DOMAIN . 'SweetsLife/vies/palnedit.php?id='.$v['id']?>" >編輯</a>｜<a href="">刪除</a> </td>
+                            </tr>
+                        </tbody>
+                        <?php }?>
+                <div class="table-responsive">
+                    <table class="table table-striped table-sm">
+                        <thead>
+                            <tr>
+                                <th>商品名稱</th>
+                                <th>容量</th>
+                                <th>期數</th>
+                                <th>編輯</th>
+                            </tr>
+                        </thead>
+                        <?php
                         foreach ($val as $k => $v){
                             $plan =json_decode($v['plan_id']);
                         ?>
@@ -55,8 +82,8 @@
                             <td>
                                 <?php
                                     $size = '';
-                                    foreach ($plan as $k2 => $v2){
-                                        $size .= '&nbsp'.$pval[$v2]['size'].'/';
+                                    foreach ($plan as $k => $v){
+                                        $size .= '&nbsp'.$pval[$v]['size'].'/';
                                     }
                                     echo rtrim($size,'/');
                                 ?>
@@ -64,13 +91,13 @@
                             <td>
                                 <?php
                                     $period = '';
-                                    foreach ($plan as $k2 => $v2){
-                                        $period .= '&nbsp'.$pval[$v2]['period'].'/';
+                                    foreach ($plan as $k => $v){
+                                        $period .= '&nbsp'.$pval[$v]['period'].'/';
                                     }
                                     echo rtrim($period,'/');
                                 ?>
                             </td>
-                            <td><a href="#" >編輯</a>｜<a href="#">刪除</a> </td>
+                            <td><a href="<?php echo DOMAIN . 'SweetsLife/vies/programedit.php?id='.$v['id']?>" >編輯</a>｜<a href="#">刪除</a> </td>
                             <?php }?>
                         </tr>
                         </tbody>

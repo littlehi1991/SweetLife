@@ -31,7 +31,7 @@
                     </a>
                     <a href="<?php echo DOMAIN."SweetsLife/view/author_input.php";?>">
                             <button type="button" class="btn btn-info">新增作者</button>
-                   </a>
+                    </a>
                     <table class="table table-striped table-sm">
                         <thead>
                         <?php
@@ -56,7 +56,7 @@
                             foreach ($aval as $k => $v){
                             ?>
                         <tr>
-                            <td><?php echo $v['aid'];?></td>
+                            <td><?php echo $v['author_id'];?></td>
                             <td><?php echo $v['a_name'];?></td>
                             <td><?php echo $v['intro'];?></td>
                             <td><a href="<?php echo DOMAIN.'Sweetslife/view/authoredit.php?id='.$v['aid'];?>" >編輯</a>｜<a href="#">刪除</a> </td>

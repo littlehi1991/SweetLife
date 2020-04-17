@@ -28,7 +28,8 @@
             <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
                 <h1 class="h2">文章編輯</h1>
             </div>
-            <form method="POST" action="../controller/update_article.php" enctype="multipart/form-data" >
+            <form method="POST" action="../controller/newsupdate.php" enctype="multipart/form-data" >
+
                 <?php
                     $page = $_GET['id'];
                     include '../controller/db.php';
@@ -38,11 +39,10 @@
                                 WHERE n.id = '$page'";
                     $val =$conn->query($sql)->fetch_all(1);
                 ?>
+                <input type="hidden" name="page" value="<?php echo $page;?>">
                 文章上架日期：<?php echo $val[0]['create_time']?>
                 <br/>
                 狀態：
-<!--                <input type="radio" name="action" value="Taipei"> 開啟-->
-<!--                <input type="radio" name="action" value="Taoyuan">關閉<br>-->
                 <?php
                     switch ($val[0]['active']){
                         case '1':
@@ -67,7 +67,7 @@
                             if((int)$val[0]['type'] === (int)$v['id']){?>
                                 <option value="<?php echo $v['id'];?>" selected><?php echo $v['n_type'];?></option>
                             <?php }else{ ?>
-                                <option value="<?php echo $v['id'];?>" <?php echo $v['n_type'];?> ></option>
+                                <option value="<?php echo $v['id'];?>"> <?php echo $v['n_type'];?> ></option>
                     <?php          }
                              }
                     ?>
@@ -85,8 +85,6 @@
                     <?php       }
                             }
                     ?>
-                <option value=" "></option>
-
                 </select><br>
 
                 文章首圖：<input type="file" name="file"  style="font-size: 16px;" value="<?php echo "../controller/".$val[0]['img'];?>">
