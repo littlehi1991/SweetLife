@@ -10,6 +10,24 @@
         <title>新增文章</title>
     </head>
     <body>
+    <script>
+        function handlefile() {
+            const input = document.getElementById('file');
+            for (var i = 0; i < input.files.length; i++) {
+                var reader = new FileReader();
+                reader.onload = function (e) {
+                    // console.log(e.target.result);
+                    const preview = document.getElementById('preview');
+                    const img = document.createElement("img");
+                    img.src = e.target.result;
+                    preview.appendChild(img);
+                    img.width = '300';
+                }
+                reader.readAsDataURL(input.files[i]);
+
+            }
+        }
+    </script>
         <header>
             <?php include "nav.php";
             require "config.php";
@@ -42,7 +60,7 @@
 
                         作者：
                         <!----資料庫取出作者名稱資訊---->
-                        <?php ;
+                        <?php
                         include "../controller/db.php";
                         $sql = "SELECT  *  FROM author ";
                         $val = $conn->query($sql)->fetch_all(1);
@@ -58,7 +76,9 @@
                         ?>
                         </select><br>
 
-                        文章首圖：<input type="file" name="file" id="file" style="font-size: 16px;"><br />
+                        文章首圖：<input type="file" name="file" id="file"  onchange="handlefile(this.file)" multiple="multiple"><br />
+                        <div id="preview"></div>
+                        <br/>
                         文章內容：<br/>
                         <textarea  name="article" style="width:500px;height:300px;"></textarea>
                         <br/>
