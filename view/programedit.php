@@ -44,42 +44,55 @@
                     <hr/>
                     <a class="btn btn-primary" href="<?php echo DOMAIN.'SweetsLife/view/planinput.php';?>" role="button"style="float: right;">新增方案</a>
                     方案選擇：<br/>
+
+<!--                    迴圈取出資料庫中所有方案的內容，回圈將id中儲存的多筆方案值取出，判斷是否為需勾選者，如果是加上checked字串-->
                     <?php
-                    $plan = json_decode($val[0]['plan_id']);
-                    var_dump($plan);
-                    foreach ($plan as $k => $v) {
-                        foreach ($pval as $k1 => $v1) {
-                            if ((int)$v === (int)$v1['id']) { ?>
-                                <input name="plan[]" type="checkbox" value="<?php echo $v1['id']; ?>" checked>
-                                <label><?php echo $v1['name']; ?></label><br/>
-                            <?php } else { ?>
-                                <input name="plan[]" type="checkbox" value="<?php echo $v1['id']; ?>">
-                                <label><?php echo $v1['name']; ?></label><br/>
-                            <?php }
-                        }
-                    }   ?>
+                        $plan = json_decode($val[0]['plan_id']);
+                        foreach ($pval as $k => $v) {
+                            $checked = '';?>
+                            <?php foreach ($plan as $k1 => $v1) {
+                               if ((int)$v['id'] === (int)$v1) {
+                                    $checked = 'checked';
+                                    continue;
+                                }
+                        }?>
+
+                    <input name="plan[]" type="checkbox" value="<?php echo $v['id']; ?>" <?php echo $checked ;?>>
+                    <label><?php echo $v['name']; ?></label><br/>
+
+                    <?php }?>
+
 
                     <hr/>
                     專案首圖：
-                    <input type="file" name="file_m" id="file_m" ><br/><br/>
+                    <input type="file" name="file_m" id="file_m" value="<?php echo $val[0]['main_img']?>" ><br/><br/>
                     專案主要敘述：
-                    <textarea name="main_narr" style="width: 500px;"></textarea>
+                    <textarea name="main_narr" style="width: 500px;"><?php echo $val[0]['main_narr'];?></textarea>
                     <hr>
                     專案圖片（一）：
                     <input type="file" name="file01" id="file02" ><br/><br/>
                     內文敘述（一）：
-                    <textarea name="narr01" style="width: 500px;"></textarea>
+                    <textarea name="narr01" style="width: 500px;"><?php echo $val[0]['narr_01'];?></textarea>
                     <hr>
                     專案圖片（二）：
                     <input type="file" name="file02" id="file02" ><br/><br/>
                     內文敘述（二）：
-                    <textarea name="narr02" style="width: 500px;"></textarea>
+                    <textarea name="narr02" style="width: 500px;"><?php echo $val[0]['narr_02'];?></textarea>
                     <hr>
                     請選擇文章開啟狀態狀態：
-                    <input type="radio" name="status" value="1">開啟
-                    <input type="radio" name="status" value="0">關閉
+                    <?php
+                        switch ($val[0]['status']){
+                            case '0':
+                                echo '<input type = "radio" name="status" value="0" checked="true">開啟'.'&nbsp';
+                                echo '<input type = "radio" name="status" value="1" >關閉'.'&nbsp';
+                            break;
+                            case '1':
+                                echo '<input type = "radio" name="status" value="0" >開啟'.'&nbsp';
+                                echo '<input type = "radio" name="status" value="1" checked="true">關閉'.'&nbsp';
+                            break;
+                        } ?>
                     <hr/>
-                    <input type="submit" value="新增產品專案" style="margin: 10px;">
+                    <input type="submit" value="修改產品" style="margin: 10px;">
                 </form>
             </div>
         </main>
