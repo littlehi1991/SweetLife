@@ -70,12 +70,14 @@
                     <textarea name="main_narr" style="width: 500px;"><?php echo $val[0]['main_narr'];?></textarea>
                     <hr>
                     專案圖片（一）：
-                    <input type="file" name="file01" id="file02" ><br/><br/>
+                    <input type="file" name="file01" id="file02" ><br/>
+                    <img src="<?php echo '../controller/'.$val[0]['main_img'] ;?>" style="width: 300px"><br/>
                     內文敘述（一）：
                     <textarea name="narr01" style="width: 500px;"><?php echo $val[0]['narr_01'];?></textarea>
                     <hr>
                     專案圖片（二）：
-                    <input type="file" name="file02" id="file02" ><br/><br/>
+                    <input type="file" name="file02" id="file02" ><br/>
+                    <img src="<?php echo '../controller/'.$val[0]['img_01'];?>" style="width: 300px"><br/>
                     內文敘述（二）：
                     <textarea name="narr02" style="width: 500px;"><?php echo $val[0]['narr_02'];?></textarea>
                     <hr>
