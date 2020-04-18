@@ -22,6 +22,7 @@
     move_uploaded_file($nimg_01 , $img_01);
     move_uploaded_file($nimg_02, $img_02);
 
+//    將陣列轉成json格式存入資料庫
     $json_plan = json_encode($plan);
 
     //將接到的值寫入資料庫
@@ -36,6 +37,7 @@
     }else{
         echo "<script>alert('新增失敗!');location.href='../view/programinput.php';</script>";
     }
+    $conn->close();
 
 
 

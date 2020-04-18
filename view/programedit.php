@@ -37,7 +37,7 @@
                 $pval = $conn->query($psql)->fetch_all(1);
             ?>
             <div>
-                <form method="POST" action="../controller/save_program.php" enctype="multipart/form-data">
+                <form method="POST" action="../controller/programpudate.php" enctype="multipart/form-data">
                     <input type="hidden" name="page" value="<?php echo $page;?>">
                     請輸入專案名稱：
                     <input type="text" name="name" value="<?php echo $val[0]['name'];?>">
@@ -65,19 +65,20 @@
 
                     <hr/>
                     專案首圖：
-                    <input type="file" name="file_m" id="file_m" value="<?php echo $val[0]['main_img']?>" ><br/><br/>
+                    <input type="file" name="file_m" id="file_m" value="<?php echo $val[0]['main_img']?>" ><br/>
+                    <img src="<?php echo '../controller/'.$val[0]['main_img'] ;?>" style="width: 300px"><br/>
                     專案主要敘述：
                     <textarea name="main_narr" style="width: 500px;"><?php echo $val[0]['main_narr'];?></textarea>
                     <hr>
                     專案圖片（一）：
                     <input type="file" name="file01" id="file02" ><br/>
-                    <img src="<?php echo '../controller/'.$val[0]['main_img'] ;?>" style="width: 300px"><br/>
+                    <img src="<?php echo '../controller/'.$val[0]['img_01'] ;?>" style="width: 300px"><br/>
                     內文敘述（一）：
                     <textarea name="narr01" style="width: 500px;"><?php echo $val[0]['narr_01'];?></textarea>
                     <hr>
                     專案圖片（二）：
                     <input type="file" name="file02" id="file02" ><br/>
-                    <img src="<?php echo '../controller/'.$val[0]['img_01'];?>" style="width: 300px"><br/>
+                    <img src="<?php echo '../controller/'.$val[0]['img_02'];?>" style="width: 300px"><br/>
                     內文敘述（二）：
                     <textarea name="narr02" style="width: 500px;"><?php echo $val[0]['narr_02'];?></textarea>
                     <hr>
