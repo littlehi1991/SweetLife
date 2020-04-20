@@ -59,7 +59,8 @@
                                 <td><?php echo $v['size'];?></td>
                                 <td><?php echo $v['price'];?></td>
                                 <td><?php echo $v['period'];?></td>
-                                <td><a href="<?php echo DOMAIN.'Sweetslife/view/planedit.php?id='.$v['id'];?>" >編輯</a>｜<a href="">刪除</a> </td>
+                                <td><a href="<?php echo DOMAIN.'Sweetslife/view/planedit.php?id='.$v['id'];?>" >編輯</a>｜
+                                    <a href='<?php echo DOMAIN.'Sweetslife/controller/plandelet.php?id='.$v['nid'];?>' onClick="return confirm('確定刪除？')" >刪除</a></td>
                             </tr>
                         </tbody>
                         <?php }?>

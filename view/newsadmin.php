@@ -59,7 +59,8 @@
                             <td><?php echo $v['author_id'];?></td>
                             <td><?php echo $v['a_name'];?></td>
                             <td><?php echo $v['intro'];?></td>
-                            <td><a href="<?php echo DOMAIN.'Sweetslife/view/authoredit.php?id='.$v['author_id'];?>" >編輯</a>｜<a href="#">刪除</a> </td>
+                            <td><a href="<?php echo DOMAIN.'Sweetslife/view/authoredit.php?id='.$v['author_id'];?>" >編輯</a>｜
+                                <a href='<?php echo DOMAIN.'Sweetslife/controller/authordelet.php?id='.$v['author_id'];?>' onClick="return confirm('確定刪除？')" >刪除</a></td>
                             <?php }?>
                         </tr>
                         </tbody>
@@ -98,8 +99,8 @@
                             <td><?php echo $v['n_type'];?></td>
                             <td><?php echo $v['a_name'];?></td>
                             <td><?php echo $active;?></td>
-                            <td><a href="<?php echo DOMAIN.'Sweetslife/view/newsedit.php?id='.$v['nid'];?>" >編輯</a>｜<a href="#">刪除</a> </td>
-
+                            <td><a href="<?php echo DOMAIN.'Sweetslife/view/newsedit.php?id='.$v['nid'];?>" >編輯</a>｜
+                                <a href='<?php echo DOMAIN.'Sweetslife/controller/newsdelet.php?id='.$v['nid'];?>' onClick="return confirm('確定刪除？')" >刪除</a></td>
                             <?php }?>
                         </tr>
                         </tbody>
