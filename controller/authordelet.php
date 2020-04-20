@@ -3,13 +3,14 @@
 
     include 'db.php';
     $sql = "DELETE FROM sweetlife.author WHERE author_id = '" . $id . "' ";
+    echo $sql;exit;
     $rs = $conn ->query($sql);
 
     if ($rs) {
     echo "<script>alert('已刪除!');location.href='../view/newsadmin.php'</script>";
         //todo 錯誤處理
     }else{
-        echo "<script>alert('刪除失敗!');location.href='../view/newsadmin.id='.$id;</script>";
+        echo "<script>alert('刪除失敗!');location.href='../view/newsadmin.php?id='.$id;</script>";
     }
 
     $conn->close();

@@ -60,7 +60,7 @@
                                 <td><?php echo $v['price'];?></td>
                                 <td><?php echo $v['period'];?></td>
                                 <td><a href="<?php echo DOMAIN.'Sweetslife/view/planedit.php?id='.$v['id'];?>" >編輯</a>｜
-                                    <a href='<?php echo DOMAIN.'Sweetslife/controller/plandelet.php?id='.$v['nid'];?>' onClick="return confirm('確定刪除？')" >刪除</a></td>
+                                    <a href='<?php echo DOMAIN.'Sweetslife/controller/plandelet.php?id='.$v['id'];?>' onClick="return confirm('確定刪除？')" >刪除</a></td>
                             </tr>
                         </tbody>
                         <?php }?>
@@ -96,13 +96,15 @@
                                     foreach ($plan as $k1 => $v1){
                                         $period .= '&nbsp'.$pval[$v1]['period'].'/';
                                     }
-                                    echo rtrim($period,'/');
+                                    echo    rtrim($period,'/');
                                 ?>
                             </td>
                                 <?php
 
                                 ?>
-                            <td><a href="<?php echo DOMAIN .'Sweetslife/view/programedit.php?id='.$v['id'];?>" >編輯</a>｜<a href="#">刪除</a> </td>
+                            <td><a href="<?php echo DOMAIN .'Sweetslife/view/programedit.php?id='.$v['id'];?>" >編輯</a>｜
+                                <a href='<?php echo DOMAIN.'Sweetslife/controller/programdelet.php?id='.$v['id'];?>' onClick="return confirm('確定刪除？')" >刪除</a></td>
+
                             <?php }?>
                         </tr>
                         </tbody>

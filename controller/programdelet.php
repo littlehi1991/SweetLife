@@ -2,7 +2,7 @@
     $id = $_GET['id'];
 
     include 'db.php';
-    $sql = "DELETE FROM sweetlife.plan WHERE id = '" . $id . "' ";
+    $sql = "DELETE FROM sweetlife.program WHERE id = '" . $id . "' ";
     $rs = $conn ->query($sql);
 
     if ($rs) {
