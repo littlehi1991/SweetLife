@@ -14,7 +14,6 @@
       <header>
           <?php include "nav.php";?>
       </header>
-
         <div class="jumbotron">
              <div class="container">
                   <h1>文字文字文字文字</h1>

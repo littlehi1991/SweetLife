@@ -85,23 +85,21 @@
                                 <?php
                                     $size = '';
                                     foreach ($plan as $k1 => $v1){
-                                        $size .= '&nbsp'.$pval[$v1]['size'].'/';
+                                        $size .= '&nbsp'.$pval[$v1]['size'];
                                     }
-                                    echo rtrim($size,'/');
+                                    echo $size;
                                 ?>
                             </td>
                             <td>
                                 <?php
                                     $period = '';
                                     foreach ($plan as $k1 => $v1){
-                                        $period .= '&nbsp'.$pval[$v1]['period'].'/';
+                                        $period .= '&nbsp'.$pval[$v1]['period'];
                                     }
-                                    echo    rtrim($period,'/');
+                                    echo  $period;
                                 ?>
                             </td>
-                                <?php
 
-                                ?>
                             <td><a href="<?php echo DOMAIN .'Sweetslife/view/programedit.php?id='.$v['id'];?>" >編輯</a>｜
                                 <a href='<?php echo DOMAIN.'Sweetslife/controller/programdelet.php?id='.$v['id'];?>' onClick="return confirm('確定刪除？')" >刪除</a></td>
 
