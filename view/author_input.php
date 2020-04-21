@@ -14,7 +14,7 @@
         </header>
         <nav aria-label="breadcrumb">
             <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a href="">首頁</a></li>
+                <li class="breadcrumb-item"><a href="<?php echo DOMAN . 'SweetsLife/view/index.php';?>">首頁</a></li>
                 <li class="breadcrumb-item active" aria-current="page">新增作者</li>
             </ol>
         </nav>

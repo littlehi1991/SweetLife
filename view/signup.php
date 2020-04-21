@@ -24,17 +24,21 @@
             </div>
             <div style="width: 35%; margin:0px auto;">
                 <div class="text-center"  valign="center">
-                    <form class="form-signin" style="width: 500px;">
+                    <form class="form-signin" style="width: 500px;" method="POST" action=" ../controller/membersave.php">
                         <h2>會員註冊</h2>
                         <br/>
                         <div>
+                            <div class="form-group ">
+                                <label  for="exampleInputName" >姓名</label>
+                                <input type="text" name="name" class="form-control" placeholder="請輸入真實姓名">
+                            </div>
                             <div class="form-group">
                                 <label for="exampleInputEmail1">電子郵件</label>
-                                <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="ex:123456@gmil.com">
+                                <input type="email" name="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="ex:123456@gmil.com">
                             </div>
                             <div class="form-group">
                                 <label for="exampleInputPassword1">密碼</label>
-                                <input type="password" class="form-control" id="exampleInputPassword1" placeholder="請輸入6~12位數中英混合密碼">
+                                <input type="password" name="password" class="form-control" id="exampleInputPassword1" placeholder="請輸入6~12位數中英混合密碼">
                             </div>
                             <div class="form-group">
                                 <label for="exampleInputPassword1">確認密碼</label>
@@ -42,26 +46,15 @@
                             </div>
                             <div class="form-group">
                                 <label for="inputAddress2">手機號碼</label>
-                                <input type="text" class="form-control" id="inputAddress2" placeholder="0912123456">
+                                <input type="text"  name="phone" class="form-control" id="inputAddress2" placeholder="0912123456">
                             </div>
                             <label for="inputAddress2">通訊地址</label>
                             <div class="form-row">
-                                <div class="form-group col-md-6">
-                                    <select id="inputState" class="form-control">
-                                        <option selected>請選擇</option>
-                                        <option>...</option>
-                                    </select>
-                                </div>
-                                <div class="form-group col-md-6">
-                                    <select id="inputState" class="form-control">
-                                        <option selected>請選擇</option>
-                                        <option>...</option>
-                                    </select>
-                                </div>
                                 <div class="form-group col-md-12">
-                                    <input type="text" class="form-control" id="inputZip" placeholder="請輸入詳細地址">
+                                    <input type="text" name="address" class="form-control" id="inputZip" placeholder="請輸入完整地址">
                                 </div>
                             </div>
+                            <br/>
                             <button class="btn btn-lg btn-primary btn-block" type="submit">註冊</button>
                         </div>
                     </form>

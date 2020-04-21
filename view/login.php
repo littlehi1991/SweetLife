@@ -16,6 +16,7 @@
         <?php include "nav.php"; ?>
     </header>
     <main>
+        <?php include '../controller/db.php';?>
         <div aria-label="breadcrumb">
             <ol class="breadcrumb">
                 <li class="breadcrumb-item"><a href="<?php echo DOMAIN .'SweetsLife/view/index.php';?>">首頁</a></li>
