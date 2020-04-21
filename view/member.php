@@ -22,7 +22,7 @@
         <?php include 'm_nav.php';?>
         <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4">
             <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-                <h1 class="h2">文章管理</h1>
+                <h1 class="h2">訂單明細</h1>
             </div>
 
             <div class="table-responsive">
@@ -34,6 +34,7 @@
                         <th>商品尺寸</th>
                         <th>單期金額</th>
                         <th>購買期數</th>
+                        <th>給予回饋</th>
                     </tr>
                     </thead>
                     <tbody>
