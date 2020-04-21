@@ -11,7 +11,7 @@
 
     include 'db.php';
     $sql =  "INSERT INTO sweetlife.member (email , username , password , phone , address )
-            VALUES ('" . $name .  "' , '" . $email . "' , '" . $dbpassword . "', '" . $phone . "' , '" . $address."')";
+            VALUES ('" . $email .  "' , '" . $name . "' , '" . $dbpassword . "', '" . $phone . "' , '" . $address."')";
                 echo $sql;eixt;
 
     $rs = $conn->query($sql);

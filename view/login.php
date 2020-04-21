@@ -25,14 +25,14 @@
         </div>
          <div style="width: 35%; margin:0px auto;">
             <div class="text-center"  valign="center">
-                <form class="form-signin" style="width: 500px;">
+                <form class="form-signin" method="post" action="../controller/connect.php" style="width: 500px;">
                     <img class="mb-4" src="/docs/assets/brand/bootstrap-solid.svg" alt="" width="72" height="72">
                     <h1 class="h3 mb-3 font-weight-normal">會員登入</h1>
                     <br/>
                     <label for="inputEmail" class="sr-only">Email address</label>
-                    <input type="email" id="inputEmail" class="form-control" placeholder="Email address" required autofocus>
-                    <label for="inputPassword" class="sr-only">Password</label>
-                    <input type="password" id="inputPassword" class="form-control" placeholder="Password" required>
+                    <input type="email" id="inputEmail" name="id"  class="form-control" placeholder="Email address" required autofocus>
+                    <label for="inputPassword"  class="sr-only">Password</label>
+                    <input type="password" id="inputPassword" name="pw" class="form-control" placeholder="Password" required>
                     <br/>
                     <div class="checkbox mb-3">
                         <label>
