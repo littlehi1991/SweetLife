@@ -2,7 +2,7 @@
     $name = $_POST['name'];
     $email = $_POST['email'];
     $password =  $_POST['password'];
-    $phont = $_POST['phone'];
+    $phone = $_POST['phone'];
     $address = $_POST['address'];
 
 

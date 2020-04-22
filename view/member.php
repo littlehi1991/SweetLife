@@ -15,26 +15,26 @@
     <nav aria-label="breadcrumb">
         <ol class="breadcrumb">
             <li class="breadcrumb-item"><a href="">首頁</a></li>
-            <li class="breadcrumb-item active" aria-current="page">文章編輯頁</li>
+            <li class="breadcrumb-item active" aria-current="page">會員資料</li>
         </ol>
     </nav>
     <div class="container-fluid">
         <?php include 'm_nav.php';?>
+    </div>
         <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4">
             <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-                <h1 class="h2">訂單明細</h1>
+                <h1 class="h2">會員資料</h1>
             </div>
 
             <div class="table-responsive">
                 <table class="table table-striped table-sm">
                     <thead>
                     <tr>
-                        <th>訂單編號</th>
-                        <th>產品名稱</th>
-                        <th>商品尺寸</th>
-                        <th>單期金額</th>
-                        <th>購買期數</th>
-                        <th>給予回饋</th>
+                        <th>會員編號</th>
+                        <th>姓名</th>
+                        <th>E-mail</th>
+                        <th>聯絡電話</th>
+                        <th>通訊地址</th>
                     </tr>
                     </thead>
                     <tbody>
@@ -43,9 +43,11 @@
                         <td></td>
                         <td></td>
                         <td></td>
+                        <td></td>
                     </tr>
                     </tbody>
                 </table>
+                <button type="button" class="btn btn-info">修改會員資料</button>
                 <hr/>
             </div>
         </main>

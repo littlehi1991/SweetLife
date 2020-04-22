@@ -31,7 +31,7 @@
                 </h5>
                 <ul class="nav flex-column mb-2">
                     <li class="nav-item">
-                        <a class="nav-link" href="#">
+                        <a class="nav-link" href="<?php echo DOMAIN . 'Sweetslife/view/memberadmin.php'?>">
                             <span data-feather="file-text"></span>
                             會員管理
                         </a>
