@@ -3,7 +3,7 @@
 
     include 'db.php';
     $sql = "DELETE FROM sweetlife.author WHERE author_id = '" . $id . "' ";
-    echo $sql;exit;
+
     $rs = $conn ->query($sql);
 
     if ($rs) {

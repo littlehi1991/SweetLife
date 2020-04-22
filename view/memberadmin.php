@@ -55,7 +55,7 @@
                             <td><?php echo $v['address'];?></td>
                             <td><a href="<?php echo DOMAIN . 'Sweetslife/view/orderlistadmin.php?id='.$v['id'];?>" 訂單記錄</td>
                             <td><a href="<?php echo DOMAIN . 'Sweetslife/view/mamberedit.php?id='.$v['id'];?>">編輯</a> ｜
-                                <a href="<a href='<?php echo DOMAIN.'Sweetslife/controller/memberdelet.php?id='.$v['id'];?>' onClick="return confirm('確定刪除？')"</a>刪除</td>
+                                <a href='<?php echo DOMAIN . 'Sweetslife/controller/memberdelet.php?id='.$v['id'];?>' onClick="return confirm('確定刪除？')" >刪除</a></td>
                         </tr>
                         </tbody>
                         <?php }?>

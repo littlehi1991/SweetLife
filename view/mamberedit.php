@@ -25,8 +25,8 @@
                         <h1 class="h2">修改會員資料</h1>
                     </div>
                     <div class="table-responsive">
-                        <form class="form-signin" style="width: 500px;" method="POST" action=" ../controller/membersave.php">
-                            <a href="<?php echo DOMAIN . 'SweetsLife/view/memberadmin.php';?>" <p>回上一頁</p></a>
+                        <form class="form-signin" style="width: 500px;" method="POST" action=" ../controller/memberupdate.php">
+                            <a href="<?php echo DOMAIN . 'SweetsLife/view/memberadmin.php';?>"> <p>回上一頁</p></a>
                             <div>
                                 <?php
                                     $page = $_GET['id'];
@@ -34,6 +34,7 @@
                                     $sql = "SELECT * FROM sweetlife.member WHERE id ='" . $page . "' ";
                                     $val = $conn->query($sql)->fetch_all(1);
                                 ?>
+                                <input type="hidden" name="page" value="<?php echo $page;?>">
                                 <div class="form-group ">
                                     <label  for="exampleInputName" ></label></label>
                                     <input type="text" name="name" class="form-control" value="<?php echo $val[0]['username'];?>">
@@ -44,7 +45,7 @@
                                 </div>
                                 <div class="form-group">
                                     <label for="exampleInputPassword1">密碼</label>
-                                    <input type="password" name="password" class="form-control" id="exampleInputPassword1" placeholder="請輸入6~12位數中英混合密碼">
+                                    <input type="password" name="pw" class="form-control" id="exampleInputPassword1" placeholder="請輸入6~12位數中英混合密碼">
                                 </div>
                                 <div class="form-group">
                                     <label for="exampleInputPassword1">確認密碼</label>
