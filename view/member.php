@@ -1,3 +1,6 @@
+<?php session_start();
+      $mid =  $_SESSION['email'];
+?>
 <!doctype html>
 <html lang="en">
     <head>
@@ -12,46 +15,49 @@
     <header>
         <?php include "nav.php";?>
     </header>
-    <nav aria-label="breadcrumb">
+    <div aria-label="breadcrumb">
         <ol class="breadcrumb">
-            <li class="breadcrumb-item"><a href="">首頁</a></li>
+            <li class="breadcrumb-item"><a href="<?php echo DOMAIN .'SweetsLIfe/view/index.php'; ?>">首頁</a></li>
             <li class="breadcrumb-item active" aria-current="page">會員資料</li>
         </ol>
-    </nav>
-    <div class="container-fluid">
-        <?php include 'm_nav.php';?>
     </div>
-        <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4">
-            <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-                <h1 class="h2">會員資料</h1>
-            </div>
+        <div class="container-fluid">
+            <?php include 'm_nav.php';
+            include '../controller/db.php';
+            $sql = "SELECT * FROM sweetlife.member WHERE email = '" . $mid . "'";
+            $val = $conn ->query($sql)->fetch_all(1);
+            ?>
+            <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4">
+                <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+                    <h1 class="h2">會員資料</h1>
+                </div>
 
-            <div class="table-responsive">
-                <table class="table table-striped table-sm">
-                    <thead>
-                    <tr>
-                        <th>會員編號</th>
-                        <th>姓名</th>
-                        <th>E-mail</th>
-                        <th>聯絡電話</th>
-                        <th>通訊地址</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    <tr>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                        <td></td>
-                    </tr>
-                    </tbody>
-                </table>
-                <button type="button" class="btn btn-info">修改會員資料</button>
-                <hr/>
-            </div>
-        </main>
-
+                <div class="table-responsive">
+                    <table class="table table-striped table-sm">
+                        <thead>
+                        <tr>
+                            <th>會員編號</th>
+                            <th>會員姓名</th>
+                            <th>E-mail</th>
+                            <th>聯絡電話</th>
+                            <th>通訊地址</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                            <td><?php echo $val[0]['id'];?></td>
+                            <td><?php echo $val[0]['username'];?></td>
+                            <td><?php echo $mid;?></td>
+                            <td><?php echo $val[0]['phone'];?></td>
+                            <td><?php echo $val[0]['address'];?></td>
+                        </tr>
+                        </tbody>
+                    </table>
+                    <a href="<?php echo DOMAIN . 'SweetsLife/view/useredit.php?id='.$val[0]['id'];?>"><button type="button" class="btn btn-info">修改會員資料</button></a>
+                    <hr/>
+                </div>
+            </main>
+        </div>
     </body>
 
 

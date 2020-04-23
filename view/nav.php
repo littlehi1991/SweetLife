@@ -18,15 +18,11 @@
                     <a class="nav-link " href="<?php echo DOMAIN . "SweetsLife/view/programlist.php";?>" aria-disabled="true">手工甜點</a>
                 </li>
             </ul>
-            <form class="form-inline my-2 my-lg-0">
-                <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-            </form>
         </div>
         <div>
-            <a href="<?php echo DOMAIN . "Sweetslife/view/login.php";?>" <img src="img/cart.png" alt="購物車圖示" title="購物車圖示" width="35x;">
+            <a href="#"></a><img src="img/cart.png" alt="購物車圖示" title="購物車圖示" width="35x;"></a>
         </div>
         <div>
-            <img src="img/icon.png" alt="會員圖示" title="會員頭像" width="50px;">
+            <a href="<?php echo DOMAIN . "Sweetslife/view/login.php";?>"><img src="img/icon.png" alt="會員圖示" title="會員頭像" width="50px;"></a>
         </div>
     </nav>

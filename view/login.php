@@ -20,7 +20,7 @@
         <div aria-label="breadcrumb">
             <ol class="breadcrumb">
                 <li class="breadcrumb-item"><a href="<?php echo DOMAIN .'SweetsLife/view/index.php';?>">首頁</a></li>
-                <li class="breadcrumb-item active" aria-current="page">Library</li>
+                <li class="breadcrumb-item active" aria-current="page">會員登入</li>
             </ol>
         </div>
          <div style="width: 35%; margin:0px auto;">
