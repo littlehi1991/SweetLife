@@ -24,5 +24,6 @@
         </div>
         <div>
             <a href="<?php echo DOMAIN . "Sweetslife/view/login.php";?>"><img src="img/icon.png" alt="會員圖示" title="會員頭像" width="50px;"></a>
+
         </div>
     </nav>

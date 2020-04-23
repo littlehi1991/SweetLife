@@ -1,5 +1,6 @@
-<?php session_start();
-      $mid =  $_SESSION['email'];
+<?php
+    session_start();
+    $userid =$_SESSION['email'] ;
 ?>
 <!doctype html>
 <html lang="en">
@@ -24,7 +25,7 @@
         <div class="container-fluid">
             <?php include 'm_nav.php';
             include '../controller/db.php';
-            $sql = "SELECT * FROM sweetlife.member WHERE email = '" . $mid . "'";
+            $sql = "SELECT * FROM sweetlife.member WHERE email = '" . $userid . "'";
             $val = $conn ->query($sql)->fetch_all(1);
             ?>
             <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-4">
@@ -47,7 +48,7 @@
                         <tr>
                             <td><?php echo $val[0]['id'];?></td>
                             <td><?php echo $val[0]['username'];?></td>
-                            <td><?php echo $mid;?></td>
+                            <td><?php echo $userid;?></td>
                             <td><?php echo $val[0]['phone'];?></td>
                             <td><?php echo $val[0]['address'];?></td>
                         </tr>

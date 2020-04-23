@@ -1,3 +1,4 @@
+<?php  session_start();?>
 <!doctype html>
 <html lang="en">
     <head>
@@ -12,39 +13,40 @@
         <title>精緻人生文章列表</title>
     </head>
     <body>
-    <header>
-        <?php include "nav.php"; ?>
-    </header>
-    <main>
-        <?php include '../controller/db.php';?>
-        <div aria-label="breadcrumb">
-            <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a href="<?php echo DOMAIN .'SweetsLife/view/index.php';?>">首頁</a></li>
-                <li class="breadcrumb-item active" aria-current="page">會員登入</li>
-            </ol>
-        </div>
-         <div style="width: 35%; margin:0px auto;">
-            <div class="text-center"  valign="center">
-                <form class="form-signin" method="post" action="../controller/connect.php" style="width: 500px;">
-                    <img class="mb-4" src="/docs/assets/brand/bootstrap-solid.svg" alt="" width="72" height="72">
-                    <h1 class="h3 mb-3 font-weight-normal">會員登入</h1>
-                    <br/>
-                    <label for="inputEmail" class="sr-only">Email address</label>
-                    <input type="email" id="inputEmail" name="id"  class="form-control" placeholder="Email address" required autofocus>
-                    <label for="inputPassword"  class="sr-only">Password</label>
-                    <input type="password" id="inputPassword" name="pw" class="form-control" placeholder="Password" required>
-                    <br/>
-                    <div class="checkbox mb-3">
-                        <label>
-                            <input type="checkbox" value="remember-me"> 記住我
-                        </label>
-                    </div>
-                    <button class="btn btn-lg btn-primary btn-block" type="submit">會員登入</button>
-                    <br/>
-                    <a href="<?php echo DOMAIN . 'SweetsLife/view/signup.php';?>" <p>還不是會員？</p></a>
-                </form>
+        <header>
+            <?php include "nav.php"; ?>
+        </header>
+        <main>
+            <?php include '../controller/db.php';?>
+            <div aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="<?php echo DOMAIN .'SweetsLife/view/index.php';?>">首頁</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">會員登入</li>
+                </ol>
             </div>
-         </div>
+             <div style="width: 35%; margin:0px auto;">
+                <div class="text-center"  valign="center">
+                    <form class="form-signin" method="post" action="../controller/connect.php" style="width: 500px;">
+                        <img class="mb-4" src="/docs/assets/brand/bootstrap-solid.svg" alt="" width="72" height="72">
+                        <h1 class="h3 mb-3 font-weight-normal">會員登入</h1>
+                        <br/>
+                        <label for="inputEmail" class="sr-only">Email address</label>
+                        <input type="email" id="inputEmail" name="id"  class="form-control" placeholder="Email address" required autofocus>
+                        <label for="inputPassword"  class="sr-only">Password</label>
+                        <input type="password" id="inputPassword" name="pw" class="form-control" placeholder="Password" required>
+                        <br/>
+                        <div class="checkbox mb-3">
+                            <label>
+                                <input type="checkbox" value="remember-me"> 記住我
+                            </label>
+                        </div>
+                        <button class="btn btn-lg btn-primary btn-block" type="submit">會員登入</button>
+                        <br/>
+                        <a href="<?php echo DOMAIN . 'SweetsLife/view/signup.php';?>" <p>還不是會員？</p></a>
+                    </form>
+                </div>
+             </div>
+        </main>
     </body>
     <footer class="text-muted">
         <div class="container">

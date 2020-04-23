@@ -6,12 +6,14 @@
     $phone = $_POST['phone'];
     $address = $_POST['address'];
 
-
     $password = md5($pw);
+
 
     include 'db.php';
     $sql = "UPDATE sweetlife.member SET email = '" . $email . "' , username = '" . $name . "' , password = '" . $password . "' , phone = '" . $phone . "' , address = '" . $address . "' 
             WHERE id = '" . $id . "'";
+
+
     $rs = $conn->query($sql);
 
     if($rs){
