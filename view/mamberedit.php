@@ -36,7 +36,7 @@
                                 ?>
                                 <input type="hidden" name="page" value="<?php echo $page;?>">
                                 <div class="form-group ">
-                                    <label  for="exampleInputName" ></label></label>
+                                    <label  for="exampleInputName" >用戶名稱</label>
                                     <input type="text" name="name" class="form-control" value="<?php echo $val[0]['username'];?>">
                                 </div>
                                 <div class="form-group">

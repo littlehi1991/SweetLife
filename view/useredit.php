@@ -27,8 +27,8 @@ $mid =  $_SESSION['email']; ?>
                         <h1 class="h2">修改會員資料</h1>
                     </div>
                     <div class="table-responsive">
-                        <form class="form-signin" style="width: 500px;" method="POST" action=" ../controller/memberupdate.php">
-                            <a href="<?php echo DOMAIN . 'SweetsLife/view/memberadmin.php';?>"> <p>回上一頁</p></a>
+                        <form class="form-signin" style="width: 500px;" method="POST" action=" ../controller/userupdate.php">
+                            <a href="<?php echo DOMAIN . 'SweetsLife/view/member.php';?>"> <p>回上一頁</p></a>
                             <div>
                                 <?php
                                 $page = $_GET['id'];
@@ -37,21 +37,15 @@ $mid =  $_SESSION['email']; ?>
                                 $val = $conn->query($sql)->fetch_all(1);
                                 ?>
                                 <input type="hidden" name="page" value="<?php echo $page;?>">
+                                <div class="form-group">
+                                    <label for="exampleInputEmail1">電子郵件</label>
+                                    <small style="color: red;"><label>帳號無法變更，請洽客服人員</label></small>
+                                    <h4><?php echo $val[0]['email'];?></h4>
+                                </div>
+                                <hr/>
                                 <div class="form-group ">
                                     <label  for="exampleInputName" >會員姓名</label>
                                     <input type="text" name="name" class="form-control" value="<?php echo $val[0]['username'];?>">
-                                </div>
-                                <div class="form-group">
-                                    <label for="exampleInputEmail1">電子郵件</label>
-                                    <input type="email" name="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" value="<?php echo $val[0]['email'];?>">
-                                </div>
-                                <div class="form-group">
-                                    <label for="exampleInputPassword1">密碼</label>
-                                    <input type="password" name="pw" class="form-control" id="exampleInputPassword1" placeholder="請輸入6~12位數中英混合密碼">
-                                </div>
-                                <div class="form-group">
-                                    <label for="exampleInputPassword1">確認密碼</label>
-                                    <input type="password" class="form-control" id="exampleInputPassword1" placeholder="請再輸入一次您的密碼">
                                 </div>
                                 <div class="form-group">
                                     <label for="inputAddress2">手機號碼</label>
