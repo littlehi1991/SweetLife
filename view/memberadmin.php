@@ -6,7 +6,17 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         <!-- Bootstrap CSS -->
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+        <script src="https://code.jquery.com/jquery-3.5.0.js" integrity="sha256-r/AaFHrszJtwpe+tHyNi/XCfMxYpbsRg2Uqn0x3s2zc=" crossorigin="anonymous"></script>
         <title>精緻人生產品列表</title>
+        <script>
+            function changeToForm(d)
+            {
+                // d = this
+                let a = $(d).html();
+                let input = '<input type="text" name="phone" placeholder="' + a + '"><button>submit</button>';
+                $(d).html(input);
+            }
+        </script>
     </head>
     <body>
         <header>
@@ -51,7 +61,7 @@
                             <td><?php echo $v['id'];?></td>
                             <td><?php echo $v['username'];?></td>
                             <td><?php echo $v['email'];?></td>
-                            <td><?php echo $v['phone'];?></td>
+                            <td onclick="changeToForm(this)"><?php echo $v['phone'];?></td>
                             <td><?php echo $v['address'];?></td>
                             <td><a href="<?php echo DOMAIN . 'Sweetslife/view/orderlistadmin.php?id='.$v['id'];?>" 訂單記錄</td>
                             <td><a href="<?php echo DOMAIN . 'Sweetslife/view/mamberedit.php?id='.$v['id'];?>">編輯</a> ｜
@@ -72,6 +82,5 @@
     <script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery.min.js"><\/script>')</script>
     <script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
-    <script src="../../assets/js/ie10-viewport-bug-workaround.js"></script>
     </body>
 </html>

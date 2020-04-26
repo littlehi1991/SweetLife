@@ -2,6 +2,8 @@
 <!--標題從這邊來-->
     <?php
     require "config.php";
+    session_start();
+    $userid =$_SESSION['email'];
     ?>
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <a class="navbar-brand" href="<?php echo DOMAIN."SweetsLife/view/index.php"?>">logo</a>
@@ -24,6 +26,14 @@
         </div>
         <div>
             <a href="<?php echo DOMAIN . "Sweetslife/view/login.php";?>"><img src="img/icon.png" alt="會員圖示" title="會員頭像" width="50px;"></a>
-
+            <?php
+                include '../controller/db.php';
+                $sql = "SELECT username FROM sweetlife.member WHERE email = '" . $userid . "'";
+                $val = $conn->query($sql)->fetch_all(1);
+                 if( $userid != null ){
+                     echo 'HI！'.$val[0]['username'].'，<a href = "DOMAIN . SweetsLife/controller/logout.php">'.'登出'.'</a>';
+                 }else{
+                     echo '歡迎光臨';
+              } ?>
         </div>
     </nav>
