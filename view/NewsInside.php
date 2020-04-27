@@ -25,9 +25,9 @@
         ?>
         <nav aria-label="breadcrumb">
             <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a href="#">Home</a></li>
-                <li class="breadcrumb-item"><a href="#">Library</a></li>
-                <li class="breadcrumb-item active" aria-current="page">Data</li>
+                <li class="breadcrumb-item"><a href="<?php echo DOMAIN . 'Sweetslife/view/index.php';?>">首頁</a></li>
+                <li class="breadcrumb-item"><a href="<?php echo  DOMAIN . 'Sweetslife/view/Newslist.php';?>">文章列表</a></li>
+                <li class="breadcrumb-item active" aria-current="page"><?php echo $val[0]['title'];?></li>
             </ol>
         </nav>
 
@@ -64,18 +64,14 @@
                 <div class="sidebar-module">
                     <h4>我們想推薦給你</h4>
                     <?php
-                    $res = '';
-                    foreach ($val as $k => $v){
-                       $res = $v['type'];
-                    }
-                    include "../controller/db.php";
-                    require "config.php";
-                    $sql = "SELECT * FROM sweetlife.news n JOIN sweetlife.type t ON n.type = t.t_id WHERE t.t_id ='$res'";
-                    $val = $conn->query($sql)->fetch_all(1);
-                    foreach($val as $k =>$v){
+                        $res = $val[0]['type'];
+                        $sql = "SELECT n.id AS nid , n.title  
+                                FROM sweetlife.news n JOIN sweetlife.type t ON n.type = t.t_id WHERE t.t_id ='" . $res . "'";
+                        $val = $conn->query($sql)->fetch_all(1);
+                        foreach($val as $k =>$v){
                         ?>
                     <ol class="list-unstyled">
-                        <li><a href="<?php echo  DOMAIN."SweetsLife/view/NewsInside.php?id=".$v['id']; ?>"><?php echo $v['title'];?></a></li>
+                        <li><a href="<?php echo  DOMAIN."SweetsLife/view/NewsInside.php?id=".$v['nid']; ?>"><?php echo $v['title'];?></a></li>
                     </ol>
                     <?php }?>
                 </div>

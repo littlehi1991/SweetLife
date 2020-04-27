@@ -18,12 +18,12 @@ $userid = $_SESSION['email'];
             <?php include "nav.php";?>
         </header>
      <main>
-         <nav aria-label="breadcrumb">
+         <div aria-label="breadcrumb">
              <ol class="breadcrumb">
-                 <li class="breadcrumb-item"><a href="">首頁</a></li>
-                 <li class="breadcrumb-item active" aria-current="page">Library</li>
+                 <li class="breadcrumb-item"><a href="<?php echo DOMAIN . 'Sweetslife/view/index.php';?>">首頁</a></li>
+                 <li class="breadcrumb-item active" aria-current="page">文章列表</li>
              </ol>
-         </nav>
+         </div>
             <div class="container">
                 <div class="row">
                     <div class="col-md-4">
