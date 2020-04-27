@@ -69,10 +69,10 @@ $userid = $_SESSION['email'];
                             ?>
 
                         <div class="card" style="width: 18rem;">
-                            <a href="<?php echo DOMAIN . "SweetsLife/view/NewsInside.php?id=".$v['n_id'];?>" ><img src=<?php echo "../controller/".$v['img']?> class="card-img-top" alt="..."></a>
+                            <a href="<?php echo DOMAIN . "SweetsLife/view/NewsInside.php?id=".$v['id'];?>" ><img src=<?php echo "../controller/".$v['img']?> class="card-img-top" alt="..."></a>
                             <span class="<?php echo $class;?>"><?php echo $v['n_type']; ?></span>
                             <div class="card-body">
-                                <a href="<?php echo DOMAIN."Sweetslife/view/NewsInside.php?id=".$v['n_id'];?> "><h3 class="card-title"><?php echo $v['title'];?></h3></a>
+                                <a href="<?php echo DOMAIN."Sweetslife/view/NewsInside.php?id=".$v['id'];?> "><h3 class="card-title"><?php echo $v['title'];?></h3></a>
                             </div>
                             <ul class="list-group list-group-flush">
                                 <li class="list-group-item"><?php echo $v['a_name'];?></li>
