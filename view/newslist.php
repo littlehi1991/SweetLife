@@ -1,3 +1,6 @@
+<?php session_start() ;
+$userid = $_SESSION['email'];
+?>
 <!doctype html>
 <html lang="en">
     <head>
@@ -77,7 +80,14 @@
                             </ul>
                             <div class="card-body">
                                 <a href="<?php echo DOMAIN . "SweetsLife/view/NewsInside.php?id=".$v['id'];?>" class="card-link">閱讀全文</a>
-                                <a href="<?php echo DOMAIN. "SweetsLife/view/newsadmin.php";?>" class="card-link">編輯</a>
+                                <?php
+                                    $usql = "SELECT type FROM sweetlife.member WHERE email = '" . $userid . "'";
+                                    $uval = $conn -> query($usql) ->fetch_all(1);
+                                    if((int)$uval[0]['type']===0){
+                                        echo '<a href=' . DOMAIN . "SweetsLife/view/newsadmin.php" .'>編輯</a>';
+                                    }
+                                    ?>
+
                             </div>
                         </div>
                     </div>
