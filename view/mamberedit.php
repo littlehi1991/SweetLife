@@ -15,7 +15,7 @@
             <nav aria-label="breadcrumb">
                 <ol class="breadcrumb">
                     <li class="breadcrumb-item"><a href="<?php echo DOMAIN . 'SweetsLife/view/index.php';?>">首頁</a></li>
-                    <li class="breadcrumb-item active" aria-current="page">會員管理</li>
+                    <li class="breadcrumb-item active" aria-current="page"><a href="<?php echo DOMAIN . 'SweetsLife/view/memeber.php';?>">會員管理</a></li>
                 </ol>
             </nav>
             <div class="container-fluid">

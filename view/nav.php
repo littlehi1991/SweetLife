@@ -31,7 +31,7 @@
                 $sql = "SELECT username FROM sweetlife.member WHERE email = '" . $userid . "'";
                 $val = $conn->query($sql)->fetch_all(1);
                  if( $userid != null ){
-                     echo 'HI！'.$val[0]['username'].'，<a href = "DOMAIN . SweetsLife/controller/logout.php">'.'登出'.'</a>';
+                     echo 'HI！'.$val[0]['username'].'，<a href =' . DOMAIN . "SweetsLife/controller/logout.php".'>'.'登出'.'</a>';
                  }else{
                      echo '歡迎光臨';
               } ?>
