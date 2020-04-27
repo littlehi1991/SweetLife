@@ -14,9 +14,16 @@ error_reporting(E_ALL);
 
         if($id != null && md5($_POST['pw']) != null && $val[0]['email']==$id && $val[0]['password'] == md5($_POST['pw'])){
             //將帳號寫入session，方便驗證使用者身份
-            echo '登入成功';
-            $_SESSION['email'] = $val[0]['email'] ;
-            header( 'Location:' . DOMAIN . "SweetsLife/view/member.php?id=".$val[0]['id']);
+            if ((int)$val[0]['type']===0){
+                echo '登入成功';
+                $_SESSION['email'] = $val[0]['email'] ;
+                header( 'Location:' . DOMAIN . "SweetsLife/view/memberadmin.php?id=".$val[0]['id']);
+            }else{
+                echo '登入成功';
+                $_SESSION['email'] = $val[0]['email'] ;
+                header( 'Location:' . DOMAIN . "SweetsLife/view/member.php?id=".$val[0]['id']);
+            }
+
             die();
         } else {
             echo '登入失敗!';
