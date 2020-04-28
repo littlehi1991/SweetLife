@@ -1,3 +1,7 @@
+ <?php
+    session_start();
+    $userid = $_SESSION['email'];
+    ?>
     <!doctype html>
     <html lang="en">
     <head>
@@ -13,20 +17,22 @@
         <?php include "nav.php";?>
     </header>
     <main>
-        <nav aria-label="breadcrumb">
+        <div aria-label="breadcrumb">
+            <?php
+            $page = $_GET['id'];
+            include '../controller/db.php';
+            require 'config.php';
+            $sql = "SELECT * FROM sweetlife.program WHERE id IN ('$page')";
+            $val = $conn ->query($sql)->fetch_all(1);
+            ?>
             <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a href="">首頁</a></li>
-                <li class="breadcrumb-item " ><a href="#">商品列表</li></a>
-                <li class="breadcrumb-item " ><a href="#"></a> 商品明細</li></a>
+                <li class="breadcrumb-item"><a href="<?php echo DOMAIN . 'SweetsLife/view/index.php';?>">首頁</a></li>
+                <li class="breadcrumb-item " ><a href="<?php echo  DOMAIN . 'Sweetslife/view/programlist.php';?>">商品列表</li></a>
+                <li class="breadcrumb-item " ><?php echo $val[0]['name'];?></li>
             </ol>
-        </nav>
+        </div>
         <body>
             <?php
-                $page = $_GET['id'];
-                include '../controller/db.php';
-                require 'config.php';
-                $sql = "SELECT * FROM sweetlife.program WHERE id IN ('$page')";
-                $val = $conn ->query($sql)->fetch_all(1);
                 $plan = json_decode($val[0]['plan_id']);
                 $plann = implode(',',$plan);
                 $psql = "SELECT * FROM sweetlife.plan WHERE id IN ($plann)";
@@ -48,33 +54,33 @@
 
                                 <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
                                     <div class="card-body">
-                                    <form>
+                                    <form method="post" action="../controller/sessioncart.php">
+                                        <input type="hidden" name="page" value="<?php echo $page;?>">
                                         <div class="form-group">
-                                            <label for="exampleFormControlSelect1">盒子尺寸</label>
-                                            <select class="form-control" id="exampleFormControlSelect1">
+                                            <label for="exampleFormControlSelect1">餅乾淨重</label>
+                                            <select  class="form-control" id="exampleFormControlSelect1" name="size">
                                                 <?php
-                                                foreach ($pval as $k => $v){
-                                               ?>
-                                                <option><?php echo $v['size'];?></option>
+                                                foreach ($pval as $k => $v){?>
+                                                <option value="<?php echo $v['size'];?>"><?php echo $v['size'];?></option>
                                                 <?php  }?>
                                             </select>
                                         </div>
                                         <div class="form-group">
                                             <label for="exampleFormControlSelect1">配送期數</label>
-                                            <select class="form-control" id="exampleFormControlSelect1">
+                                            <select  class="form-control" id="exampleFormControlSelect2" name="period">
                                                 <?php
                                                 foreach ($pval as $k => $v){ ?>
-                                                    <option><?php echo $v['period'];?></option>
+                                                    <option value="<?php echo $v['period'];?>"><?php echo $v['period'];?></option>
                                                 <?php }?>
                                             </select>
                                         </div>
                                         <div class="form-group">
-                                            <label for="exampleFormControlTextarea1">特別要求</label>
-                                            <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+                                            <label for="exampleFormControlTextarea1" >特別要求</label>
+                                            <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="others"></textarea>
                                         </div>
-                                        <small class="text-muted">共計金額？？？元</small>
+                                        <small class="text-muted">共計金額  元</small>
                                         <hr/>
-                                        <input type="submit" value="前往結帳"/>
+                                        <input type="submit" value="前往結帳">
                                     </form>
                                     </div>
                                 </div>

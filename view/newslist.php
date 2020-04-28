@@ -1,6 +1,5 @@
 <?php session_start() ;
-$userid = $_SESSION['email'];
-?>
+$userid = $_SESSION['email']; ?>
 <!doctype html>
 <html lang="en">
     <head>

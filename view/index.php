@@ -22,7 +22,7 @@
                       <p>敘述敘述敘述敘述敘述敘述敘述敘述敘述敘述敘述敘述敘述敘述敘述</p>
                       <br>
                       <p>
-                       <a class="btn btn-primary btn-lg" href="#" role="button">開始購物»</a>
+                       <a class="btn btn-primary btn-lg" href="<?php echo DOMAIN . 'Sweetslife/view/programlist.php';?>" role="button">開始購物»</a>
                       </p>
              </div>
         </div>
