@@ -1,7 +1,6 @@
 <?php
     error_reporting(E_ALL);
     session_start();
-    $userid = $_SESSION['email'];
     $pid = $_POST['page'];
     $size = $_POST['size'];
     $period = $_POST['period'];
@@ -9,4 +8,10 @@
 
     $proarray = array($pid , $size , $period , $others);
     $_SESSION['orderlist'] = $proarray;
-    var_dump($proarray);
+
+    if($proarray != null) {
+        echo '已加入購物車';
+        header( 'Location:' . "../view/programinside.php?id=".$pid);
+    }else{
+        echo '加入失敗，請與客服人員聯絡';
+    }

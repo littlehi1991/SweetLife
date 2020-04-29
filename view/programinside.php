@@ -80,7 +80,7 @@
                                         </div>
                                         <small class="text-muted">共計金額  元</small>
                                         <hr/>
-                                        <input type="submit" value="前往結帳">
+                                        <input type="submit" value="加入購物車">
                                     </form>
                                     </div>
                                 </div>
