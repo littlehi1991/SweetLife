@@ -5,9 +5,9 @@
     $size = $_POST['size'];
     $period = $_POST['period'];
     $others = $_POST['others'];
-    $num = 1;
 
-    $proarray = array($pid , $size , $period , $others , $num);
+
+    $proarray = array($pid , $size , $period , $others );
     $_SESSION['orderlist'] = $proarray;
 
     if($proarray != null && $pid = $proarray[0][$pid]) {
