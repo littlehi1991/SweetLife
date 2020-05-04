@@ -3,7 +3,8 @@
     <?php
     require "config.php";
     session_start();
-    $userid =$_SESSION['email'];
+    $userid = $_SESSION['email'];
+    $cartNum = $_SESSION['orderlist'][0] ;
     ?>
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <a class="navbar-brand" href="<?php echo DOMAIN."SweetsLife/view/index.php"?>">logo</a>
@@ -23,6 +24,7 @@
         </div>
         <div>
             <a href="#"></a><img src="img/cart.png" alt="購物車圖示" title="購物車圖示" width="35x;"></a>
+            <span><?php echo count($cartNum);?></span>
         </div>
         <div>
             <a href="<?php echo DOMAIN . "Sweetslife/view/login.php";?>"><img src="img/icon.png" alt="會員圖示" title="會員頭像" width="50px;"></a>
