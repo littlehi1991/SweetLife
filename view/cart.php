@@ -1,3 +1,7 @@
+<?php
+    session_start();
+    echo $userid;
+?>
 <!doctype html>
 <html lang="en">
     <head>

@@ -8,6 +8,8 @@
 
     $proarray = array($pid , $size , $period , $others );
 
+    $_SESSION['orderlist'][] = $proarray;
+    
     $chk = true;
     if(!empty($_SESSION['orderlist'])){
         foreach ($_SESSION['orderlist'] as $k => $v){
@@ -17,13 +19,13 @@
             }
         }
     }
-    if($chk ===false){
+    if($chk === false){
         echo '此產品已存在於購物車';
         header( 'Location:' . "../view/programinside.php?id=".$pid);
     }
 
-    $_SESSION['orderlist'][] = $proarray;
-//    echo count($_SESSION['orderlist'][0]);exi t;
+
+
 
     if($proarray != null ) {
         echo '已加入購物車';

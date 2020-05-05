@@ -4,7 +4,7 @@
     require "config.php";
     session_start();
     $userid = $_SESSION['email'];
-    $cartNum = $_SESSION['orderlist'][0] ;
+    $cartNum = $_SESSION['orderlist'] ;
     ?>
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <a class="navbar-brand" href="<?php echo DOMAIN."SweetsLife/view/index.php"?>">logo</a>
@@ -22,9 +22,17 @@
                 </li>
             </ul>
         </div>
-        <div>
-            <a href="#"></a><img src="img/cart.png" alt="購物車圖示" title="購物車圖示" width="35x;"></a>
-            <span><?php echo $cartNum;?></span>
+        <div c>
+            <a href="#"><img src="img/cart.png" alt="購物車圖示" title="購物車圖示" width="35x;"></a>
+            <span>
+                <?php
+                if($userid=== null){
+                    echo '0';
+                } else {
+                echo count($cartNum);?>
+                <a href="<?php echo DOMAIN.'SweetsLife/controller/clearcart.php';?>" <span>清空</span>
+            <?php    }?>
+            </span>
         </div>
         <div>
             <a href="<?php echo DOMAIN . "Sweetslife/view/login.php";?>"><img src="img/icon.png" alt="會員圖示" title="會員頭像" width="50px;"></a>

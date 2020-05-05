@@ -1,6 +1,7 @@
  <?php
     session_start();
     $userid = $_SESSION['email'];
+    $cartNum = $_SESSION['orderlist'][0] ;
     ?>
     <!doctype html>
     <html lang="en">
