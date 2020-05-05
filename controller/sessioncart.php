@@ -8,21 +8,21 @@
 
     $proarray = array($pid , $size , $period , $others );
 
-    $_SESSION['orderlist'][] = $proarray;
-    
+
     $chk = true;
-    if(!empty($_SESSION['orderlist'])){
-        foreach ($_SESSION['orderlist'] as $k => $v){
-            if((int)$pid===$v['pid']){
-                $chk = false;
-                continue;
-            }
-        }
+    if(isset($_SESSION['orderlist'])){
+       foreach ($_SESSION['orderlist'] as $k => $v){
+           if((int)$pid === (int)$v[0]){
+               echo "此產品已存在於購物車!";
+               echo "<script>alert('回商品內頁!');history.back();</script>";
+               continue;
+           }
+       }
+
+    } else {
+        $_SESSION['orderlist'][] = $_SESSION['order'];
     }
-    if($chk === false){
-        echo '此產品已存在於購物車';
-        header( 'Location:' . "../view/programinside.php?id=".$pid);
-    }
+
 
 
 
