@@ -37,7 +37,8 @@
                         $pval = $conn->query($psql)->fetch_all(1);
                         foreach ($val as $k => $v){
                             $plan = json_decode($v['plan_id']);
-                    ?>
+
+                        ?>
                                 <div class="card mb-4 shadow-sm">
                                 <div class="card-header">
                                     <h4 class="my-0 font-weight-normal"><?php echo $v['name']; ?></h4>
@@ -51,7 +52,7 @@
                                     $period = '';
                                     foreach ($plan  as $k2 =>$v2) {
                                      $size .= '&nbsp'.$pval[$v2]['size'].'/';
-                                     $period .='&nbsp'. $pval[$v2]['period'].'/' ;
+                                     $period .= '&nbsp'. $pval[$v2]['period']."/" ;
                                     }
                                     ?>
                                 <li>容量<br/>

@@ -79,33 +79,33 @@
 
                                 <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
                                     <div class="card-body">
-                                    <form method="post" action="../controller/sessioncart.php">
-                                        <input type="hidden" name="page" value="<?php echo $page;?>">
-                                        <div class="form-group">
-                                            <label for="exampleFormControlSelect1">餅乾淨重</label>
-                                            <select  class="form-control" id="exampleFormControlSelect1" name="size">
-                                                <?php
-                                                foreach ($pval as $k => $v){?>
-                                                <option value="<?php echo $v['size'];?>" data-price="<?php echo $v['price'];?>"><?php echo $v['size'];?></option>
-                                                <?php  }?>
-                                            </select>
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="exampleFormControlSelect1">配送期數</label>
-                                            <select  class="form-control" id="exampleFormControlSelect2" name="period">
-                                                <?php
-                                                foreach ($pval as $k => $v){ ?>
-                                                    <option value="<?php echo $v['period'];?>"><?php echo $v['period'];?></option>
-                                                <?php }?>
-                                            </select>
-                                        </div>
-                                        <div >共計<p class="show_price"></p><span>元</span></div>
-                                        <div class="form-group">
-                                            <label for="exampleFormControlTextarea1" >特別要求</label>
-                                            <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="others"></textarea>
-                                        </div>
-                                        <input type="submit" value="加入購物車">
-                                    </form>
+                                        <form method="post" action="../controller/sessioncart.php">
+                                            <input type="hidden" name="page" value="<?php echo $page;?>">
+                                            <div class="form-group">
+                                                <label for="exampleFormControlSelect1">餅乾淨重</label>
+                                                <select  class="form-control" id="exampleFormControlSelect1" name="size">
+                                                    <?php
+                                                    foreach ($pval as $k => $v){?>
+                                                    <option value="<?php echo $v['size'];?>" data-price="<?php echo $v['price'];?>"><?php echo $v['size'];?></option>
+                                                    <?php  }?>
+                                                </select>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="exampleFormControlSelect1">配送期數</label>
+                                                <select  class="form-control" id="exampleFormControlSelect2" name="period">
+                                                    <?php
+                                                    foreach ($pval as $k => $v){ ?>
+                                                        <option value="<?php echo $v['period'];?>"><?php echo $v['period'];?></option>
+                                                    <?php }?>
+                                                </select>
+                                            </div>
+                                            <div >共計<p class="show_price"></p><span>元</span></div>
+                                            <div class="form-group">
+                                                <label for="exampleFormControlTextarea1" >特別要求</label>
+                                                <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="others"></textarea>
+                                            </div>
+                                            <input type="submit" value="加入購物車">
+                                        </form>
                                     </div>
                                 </div>
                             </div>

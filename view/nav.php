@@ -24,7 +24,7 @@
         </div>
         <div>
             <a href="#"></a><img src="img/cart.png" alt="購物車圖示" title="購物車圖示" width="35x;"></a>
-            <span><?php echo count($cartNum);?></span>
+            <span><?php echo $cartNum;?></span>
         </div>
         <div>
             <a href="<?php echo DOMAIN . "Sweetslife/view/login.php";?>"><img src="img/icon.png" alt="會員圖示" title="會員頭像" width="50px;"></a>
