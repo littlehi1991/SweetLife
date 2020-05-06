@@ -22,8 +22,14 @@
                 </li>
             </ul>
         </div>
-        <div c>
-            <a href="#"><img src="img/cart.png" alt="購物車圖示" title="購物車圖示" width="35x;"></a>
+        <div>
+            <?php
+                if(isset($userid)){
+            ?>
+            <a href="<?php echo DOMAIN . 'Sweetslife/view/cart.php'?>"><img src="img/cart.png" alt="購物車圖示" title="購物車圖示" width="35x;"></a>
+            <?php } else {?>
+            <a href="<?php echo DOMAIN . 'Sweetslife/view/login.php'?>"><img src="img/cart.png" alt="購物車圖示" title="購物車圖示" width="35x;"></a>
+            <?php }?>
             <span>
                 <?php
                 if($userid=== null){
