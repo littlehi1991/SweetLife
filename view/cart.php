@@ -9,11 +9,34 @@
         <!-- Required meta tags -->
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
         <!-- Bootstrap CSS -->
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-
         <title>精緻人生產品列表</title>
+        <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+        <!--        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>-->
+    <script>
+        $(document).ready(function () {
+            replaceTotalPrice();
+        });
+
+        $(document).on('change', '#exampleFormControlSelect1', function() {
+            replaceTotalPrice();
+        });
+
+        $(document).on('change', '#exampleFormControlSelect2', function () {
+            replaceTotalPrice();
+        });
+
+        function replaceTotalPrice() {
+            let price = $('#exampleFormControlSelect1 :selected').attr('data-price');
+            let id = $('#exampleFormControlSelect1').val();
+            let quantity = $('#exampleFormControlSelect2').val();
+
+            $('.show_price').html(price * quantity);
+        }
+    </script>
     </head>
     <body>
         <header>
@@ -79,18 +102,20 @@
                                                                 }?>
                                                         </select>
                                                     </div>
-                                                    <div >共計<p class="show_price"></p><span>元</span></div>
+                                                    <div >方案金額$<p class="show_price"></p></div>
                                                     <div class="form-group">
                                                         <label for="exampleFormControlTextarea1" >特別要求</label>
-                                                        <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="others"><?php echo $v[3];?></textarea>
+                                                        <textarea class="form-control" id="exampleFormControlTextarea" rows="3" name="others"><?php echo $v[3];?></textarea>
                                                     </div>
                                                 </form>
-                                                <a href="<?php echo DOMAIN ."SweetsLife/view/programinside.php?id=".$v[0];?>"><button type="button" class="btn btn-lg btn-block btn-primary">查看商品</button></a>
+                                                <a href="<?php echo DOMAIN ."SweetsLife/view/programinside.php?id=".$v[0];?>"><button type="button" class="btn btn-primary" >查看商品</button></a>
+                                                <a href="<?php echo DOMAIN ."SweetsLife/view/programinside.php?id=".$v[0];?>"><button type="button" class="btn btn btn-secondary">移除商品</button></a>
+
                                             </div>
                                         </div>
              <?php                   }
 
-                        }
+                            }
                     }
                 } ?>
             </div>
@@ -103,13 +128,13 @@
         </p>
     </footer>
 
-<!-- Bootstrap core JavaScript
-================================================== -->
-<!-- Placed at the end of the document so the pages load faster -->
-<script src="https://cdn.bootcss.com/jquery/1.12.4/jquery.min.js"></script>
-<script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery.min.js"><\/script>')</script>
-<script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-<!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
-<script src="../../assets/js/ie10-viewport-bug-workaround.js"></script>
-</body>
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://cdn.bootcss.com/jquery/1.12.4/jquery.min.js"></script>
+    <script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery.min.js"><\/script>')</script>
+    <script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <script src="../../assets/js/ie10-viewport-bug-workaround.js"></script>
+    </body>
 </html>
