@@ -1,6 +1,7 @@
 <?php
     session_start();
-    echo $userid;
+    $userid = $_SESSION['email'];
+    $cartNum = $_SESSION['orderlist'] ;
 ?>
 <!doctype html>
 <html lang="en">
@@ -25,63 +26,73 @@
                     <li class="breadcrumb-item active" aria-current="page">購物車清單</li>
                 </ol>
             </div>
+
             <div class="pricing-header px-3 py-3 pt-md-5 pb-md-4 mx-auto text-center">
                 <h1 class="display-4">購物車清單</h1>
                 <p class="lead">請在此確認您的商品</p>
             </div>
-
             <div class="container">
                 <div class="card-deck mb-3 text-center">
-                    <?php
-                    include "../controller/db.php";
-                    require "config.php";
-                    $sql= "SELECT * FROM sweetlife.program";
-                    $val= $conn->query($sql)->fetch_all(1);
-                    $psql = "SELECT * FROM sweetlife.plan";
-                    $pval = $conn->query($psql)->fetch_all(1);
-                    foreach ($val as $k => $v){
-                        $plan = json_decode($v['plan_id']);
+                <?php
+                include "../controller/db.php";
+                $sql= "SELECT * FROM sweetlife.program ";
+                $val= $conn -> query($sql) -> fetch_all(1);
+                $psql = "SELECT * FROM sweetlife.plan";
+                $pval = $conn -> query($psql) -> fetch_all(1);
+                if(!isset($cartNum)){
+                    echo "<script>alert('購物車內沒有商品!');history.back();</script>";
+                }
+                if(isset($cartNum)){
+                    foreach ($val as $k0 => $v0){
+                            foreach ($cartNum as $k => $v){
+                                if((int)$v0['id']===(int)$v[0]){?>
+                                        <div class="card mb-4 shadow-sm">
+                                            <div class="card-header">
+                                                <h4 class="my-0 font-weight-normal"><?php echo $v0['name'];?></h4>
+                                            </div>
+                                            <div class="card-body">
+                                                <img src="<?php echo '../controller/' . $v0['main_img']; ?>" alt="產品文字" width="50%;">
+                                                <form method="post" action="../controller/sessioncart.php">
+                                                    <div class="form-group">
+                                                        <label for="exampleFormControlSelect1">餅乾淨重</label>
+                                                        <select  class="form-control" id="exampleFormControlSelect1" name="size">
+                                                            <?php
+                                                                foreach ($pval as $k2 => $v2) {
+                                                                    if ((int)$v[1] === (int)$v2['size']) { ?>
+                                                                        <option value="<?php echo $v2['size']; ?>" data-price="<?php echo $v2['price']; ?>" selected><?php echo $v2['size']; ?></option>
+                                                                    <?php } else { ?>
+                                                                        <option value="<?php echo $v2['size']; ?>" data-price="<?php echo $v2['price']; ?>"><?php echo $v2['size']; ?></option>
+                                                                    <?php }
+                                                                }?>
+                                                        </select>
+                                                    </div>
+                                                    <div class="form-group">
+                                                        <label for="exampleFormControlSelect1">配送期數</label>
+                                                        <select  class="form-control" id="exampleFormControlSelect2" name="period">
+                                                            <?php
+                                                                foreach ($pval as $k2 => $v2){
+                                                                    if((int)$v[2] === (int)$v2['period']){ ?>
+                                                                        <option value="<?php echo $v2['period'];?>" selected><?php echo $v2['period'];?></option>
+                                                                    <?php } else { ?>
+                                                                        <option value="<?php echo $v2['period'];?>"><?php echo $v2['period'];?></option>
+                                                        <?php           }
+                                                                }?>
+                                                        </select>
+                                                    </div>
+                                                    <div >共計<p class="show_price"></p><span>元</span></div>
+                                                    <div class="form-group">
+                                                        <label for="exampleFormControlTextarea1" >特別要求</label>
+                                                        <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="others"><?php echo $v[3];?></textarea>
+                                                    </div>
+                                                </form>
+                                                <a href="<?php echo DOMAIN ."SweetsLife/view/programinside.php?id=".$v[0];?>"><button type="button" class="btn btn-lg btn-block btn-primary">查看商品</button></a>
+                                            </div>
+                                        </div>
+             <?php                   }
 
-                        ?>
-                        <div class="card mb-4 shadow-sm">
-                            <div class="card-header">
-                                <h4 class="my-0 font-weight-normal"><?php echo $v['name']; ?></h4>
-                            </div>
-                            <div class="card-body">
-                                <img src="<?php echo '../controller/' . $v['main_img']; ?>" alt="產品文字" width="80%;">
-                                <div class="card-body">
-                                    <form method="post" action="../controller/sessioncart.php">
-                                        <input type="hidden" name="page" value="<?php echo $page;?>">
-                                        <div class="form-group">
-                                            <label for="exampleFormControlSelect1">餅乾淨重</label>
-                                            <select  class="form-control" id="exampleFormControlSelect1" name="size">
-                                                <?php
-                                                foreach ($pval as $k => $v){?>
-                                                    <option value="<?php echo $v['size'];?>" data-price="<?php echo $v['price'];?>"><?php echo $v['size'];?></option>
-                                                <?php  }?>
-                                            </select>
-                                        </div>
-                                        <div class="form-group">
-                                            <label for="exampleFormControlSelect1">配送期數</label>
-                                            <select  class="form-control" id="exampleFormControlSelect2" name="period">
-                                                <?php
-                                                foreach ($pval as $k => $v){ ?>
-                                                    <option value="<?php echo $v['period'];?>"><?php echo $v['period'];?></option>
-                                                <?php }?>
-                                            </select>
-                                        </div>
-                                        <div >共計<p class="show_price"></p><span>元</span></div>
-                                        <div class="form-group">
-                                            <label for="exampleFormControlTextarea1" >特別要求</label>
-                                            <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="others"></textarea>
-                                        </div>
-                                        <input type="submit" value="加入購物車">
-                                    </form>
-                                </div>
-                            </div>
-                        </div>
-                    <?php }?>
-                </div>
+                        }
+                    }
+                } ?>
             </div>
         </main>
     </body>

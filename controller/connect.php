@@ -17,10 +17,12 @@
             if ((int)$val[0]['type']===0){
                 echo '登入成功';
                 $_SESSION['email'] = $val[0]['email'] ;
+//                echo "<script>alert('登入成功!');history.back();</script>";
                 header( 'Location:' . DOMAIN . "SweetsLife/view/memberadmin.php?id=".$val[0]['id']);
             }else{
                 echo '登入成功';
                 $_SESSION['email'] = $val[0]['email'] ;
+//                echo "<script>alert('登入成功!');history.back();</script>";
                 header( 'Location:' . DOMAIN . "SweetsLife/view/member.php?id=".$val[0]['id']);
             }
 

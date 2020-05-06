@@ -6,7 +6,10 @@ $size = $_POST['size'];
 $period = $_POST['period'];
 $others = $_POST['others'];
 
+
 $proarray = array($pid , $size , $period , $others );
+
+
 
 $chk = true;
 if(isset($_SESSION['orderlist'])){

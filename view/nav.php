@@ -29,27 +29,33 @@
             <a href="<?php echo DOMAIN . 'Sweetslife/view/cart.php'?>"><img src="img/cart.png" alt="購物車圖示" title="購物車圖示" width="35x;"></a>
             <?php } else {?>
             <a href="<?php echo DOMAIN . 'Sweetslife/view/login.php'?>"><img src="img/cart.png" alt="購物車圖示" title="購物車圖示" width="35x;"></a>
-            <?php }?>
-            <span>
-                <?php
-                if($userid=== null){
-                    echo '0';
+            <?php }
+                if(!isset($cartNum)){
+
                 } else {
-                echo count($cartNum);?>
-                <a href="<?php echo DOMAIN.'SweetsLife/controller/clearcart.php';?>" <span>清空</span>
-            <?php    }?>
-            </span>
+                    echo count($cartNum).'&nbsp';
+                    echo '<a href='. DOMAIN . "SweetsLife/controller/clearcart.php".'><span>清空<span></a>';
+               }?>
         </div>
         <div>
-            <a href="<?php echo DOMAIN . "Sweetslife/view/login.php";?>"><img src="img/icon.png" alt="會員圖示" title="會員頭像" width="50px;"></a>
             <?php
                 include '../controller/db.php';
-                $sql = "SELECT username FROM sweetlife.member WHERE email = '" . $userid . "'";
+                $sql = "SELECT username , type FROM sweetlife.member WHERE email = '" . $userid . "'";
                 $val = $conn->query($sql)->fetch_all(1);
-                 if( $userid != null ){
-                     echo 'HI！'.$val[0]['username'].'，<a href =' . DOMAIN . "SweetsLife/controller/logout.php".'>'.'登出'.'</a>';
-                 }else{
+                 if( !isset($userid) ){
+                     echo '<a href='. DOMAIN . "Sweetslife/view/login.php".'><img src="img/icon.png" alt="會員圖示" title="會員頭像" width="50px;"></a>';
                      echo '歡迎光臨';
-              } ?>
+                 } else {
+                     switch ($val[0]['type']) {
+                         case '1':
+                             echo '<a href=' . DOMAIN . "Sweetslife/view/member.php" . '><img src="img/icon.png" alt="會員圖示" title="會員頭像" width="50px;"></a>';
+                             echo 'HI！' . $val[0]['username'] . '，<a href =' . DOMAIN . "SweetsLife/controller/logout.php" . '>' . '登出' . '</a>';
+                         break;
+                         case '0':
+                             echo '<a href=' . DOMAIN . "Sweetslife/view/memberadmin.php" . '><img src="img/icon.png" alt="會員圖示" title="會員頭像" width="50px;"></a>';
+                             echo 'HI！' . $val[0]['username'] . '，<a href =' . DOMAIN . "SweetsLife/controller/logout.php" . '>' . '登出' . '</a>';
+                         break;
+                     }
+                 }?>
         </div>
     </nav>
