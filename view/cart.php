@@ -109,8 +109,7 @@
                                                     </div>
                                                 </form>
                                                 <a href="<?php echo DOMAIN ."SweetsLife/view/programinside.php?id=".$v[0];?>"><button type="button" class="btn btn-primary" >查看商品</button></a>
-                                                <a href="<?php echo DOMAIN ."SweetsLife/view/programinside.php?id=".$v[0];?>"><button type="button" class="btn btn btn-secondary">移除商品</button></a>
-
+                                                <a href="<?php echo DOMAIN ."SweetsLife/controller/removeCart.php?id=".$v[0];?>" onclick="return confirm('確定移除？')"><button type="button" class="btn btn btn-secondary">移除商品</button></a>
                                             </div>
                                         </div>
              <?php                   }
