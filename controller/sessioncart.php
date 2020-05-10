@@ -22,7 +22,7 @@ if(isset($_SESSION['orderlist'])){
 }
 
 if($chk === false){
-    echo "<script>alert('此產品已存在於購物車!');history.back();</script>";
+        echo "<script>alert('此產品已存在於購物車!');history.back();</script>";
 } else {
     $_SESSION['orderlist'][] = $proarray;
     echo "<script>alert('已加入購物車!');history.back();</script>";

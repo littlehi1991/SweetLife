@@ -84,8 +84,12 @@
                             <td>
                                 <?php
                                     $size = '';
-                                    foreach ($plan as $k1 => $v1){
-                                        $size .= '&nbsp'.$pval[$k1]['size'].'/';
+                                    foreach ($plan as $k1 => $v1) {
+                                        foreach ($pval as $kk => $vv) {
+                                            if((int)$v1 === (int)$vv['id']){
+                                                $size .= '&nbsp' . $pval[$kk]['size'] . '/';
+                                            }
+                                        }
                                     }
                                     echo rtrim($size, "/") ;
                                 ?>
@@ -94,7 +98,11 @@
                                 <?php
                                     $period = '';
                                     foreach ($plan as $k1 => $v1){
-                                        $period .= '&nbsp'.$pval[$k1]['period'].'/';
+                                        foreach ($pval as $kk => $vv){
+                                            if((int)$v1 ===(int)$vv['id']){
+                                                $period .= '&nbsp'.$pval[$kk]['period'].'/';
+                                            }
+                                        }
                                     }
                                     echo  rtrim($period, "/") ;
                                 ?>
