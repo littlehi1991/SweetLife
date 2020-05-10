@@ -40,20 +40,20 @@
         <div>
             <?php
                 include '../controller/db.php';
-                $sql = "SELECT username , type FROM sweetlife.member WHERE email = '" . $userid . "'";
-                $val = $conn->query($sql)->fetch_all(1);
+                $ssql = "SELECT username , type FROM sweetlife.member WHERE email = '" . $userid . "'";
+                $vval = $conn->query($ssql)->fetch_all(1);
                  if( !isset($userid) ){
                      echo '<a href='. DOMAIN . "Sweetslife/view/login.php".'><img src="img/icon.png" alt="會員圖示" title="會員頭像" width="50px;"></a>';
                      echo '歡迎光臨';
                  } else {
-                     switch ($val[0]['type']) {
+                     switch ($vval[0]['type']) {
                          case '1':
                              echo '<a href=' . DOMAIN . "Sweetslife/view/member.php" . '><img src="img/icon.png" alt="會員圖示" title="會員頭像" width="50px;"></a>';
-                             echo 'HI！' . $val[0]['username'] . '，<a href =' . DOMAIN . "SweetsLife/controller/logout.php" . '>' . '登出' . '</a>';
+                             echo 'HI！' . $vval[0]['username'] . '，<a href =' . DOMAIN . "SweetsLife/controller/logout.php" . '>' . '登出' . '</a>';
                          break;
                          case '0':
                              echo '<a href=' . DOMAIN . "Sweetslife/view/memberadmin.php" . '><img src="img/icon.png" alt="會員圖示" title="會員頭像" width="50px;"></a>';
-                             echo 'HI！' . $val[0]['username'] . '，<a href =' . DOMAIN . "SweetsLife/controller/logout.php" . '>' . '登出' . '</a>';
+                             echo 'HI！' . $vval[0]['username'] . '，<a href =' . DOMAIN . "SweetsLife/controller/logout.php" . '>' . '登出' . '</a>';
                          break;
                      }
                  }?>

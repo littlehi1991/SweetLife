@@ -82,7 +82,7 @@
                     內文敘述（二）：
                     <textarea name="narr02" style="width: 500px;"><?php echo $val[0]['narr_02'];?></textarea>
                     <hr>
-                    請選擇文章開啟狀態狀態：
+                    請選擇商品開啟狀態：
                     <?php
                         switch ($val[0]['status']){
                             case '0':

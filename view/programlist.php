@@ -33,12 +33,15 @@
                         require "config.php";
                         $sql= "SELECT * FROM sweetlife.program";
                         $val= $conn->query($sql)->fetch_all(1);
+
+//                        unset($val[0]);
+//                        unset($val[1]);
+
                         $psql = "SELECT * FROM sweetlife.plan";
                         $pval = $conn->query($psql)->fetch_all(1);
                         foreach ($val as $k => $v){
                             $plan = json_decode($v['plan_id']);
-
-                        ?>
+                            ?>
                                 <div class="card mb-4 shadow-sm">
                                 <div class="card-header">
                                     <h4 class="my-0 font-weight-normal"><?php echo $v['name']; ?></h4>
@@ -50,9 +53,13 @@
                                     //.= 字串相加，將foreach出來的值用字串相加後丟入變數中
                                     $size = '';
                                     $period = '';
-                                    foreach ($plan  as $k2 =>$v2) {
-                                     $size .= '&nbsp'.$pval[$v2]['size'].'/';
-                                     $period .= '&nbsp'. $pval[$v2]['period']."/" ;
+                                    foreach ($plan as $k2 => $v2) {
+                                        foreach ($pval as $kk => $vv ) {
+                                            if ((int)$v2 ===(int)$vv['id'] ){
+                                                $size .= $pval[$kk]['size'] . '/';
+                                                $period .= $pval[$kk]['period'] . '/';
+                                            }
+                                        }
                                     }
                                     ?>
                                 <li>容量<br/>

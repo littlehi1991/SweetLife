@@ -85,18 +85,18 @@
                                 <?php
                                     $size = '';
                                     foreach ($plan as $k1 => $v1){
-                                        $size .= '&nbsp'.$pval[$v1]['size'];
+                                        $size .= '&nbsp'.$pval[$k1]['size'].'/';
                                     }
-                                    echo $size;
+                                    echo rtrim($size, "/") ;
                                 ?>
                             </td>
                             <td>
                                 <?php
                                     $period = '';
                                     foreach ($plan as $k1 => $v1){
-                                        $period .= '&nbsp'.$pval[$v1]['period'];
+                                        $period .= '&nbsp'.$pval[$k1]['period'].'/';
                                     }
-                                    echo  $period;
+                                    echo  rtrim($period, "/") ;
                                 ?>
                             </td>
 
