@@ -4,6 +4,8 @@ $id = $_POST['id'];
 $col = $_POST['col'];
 $val = $_POST['val'];
 
+console.log('123');exit;
+
 //todo DB 操作
 // query = xxx
 if (empty($id) or empty($col) or empty($val)) {

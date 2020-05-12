@@ -62,9 +62,7 @@ for ($i = 1; $i <= 10; $i++) {
 <body>
     <div class="light_box" style="width: 100%; height: 100%; background-color: rgba(0, 0, 0, 0.5); z-index: 9999; position: absolute; left: 0; top: 0; display: none;">
         <div class="light_box_content" style="width: 40%; height: 200px; background-color: white; position: relative; left: 30%; top: 20%; text-align: center; padding-top: 30px; padding-left: 5%;">
-            <div class="form_object" style="width: 80%;">
-
-            </div>
+            <div class="form_object" style="width: 80%;"></div>
             <div class="buttons" style="text-align: center; margin-top: 20px;">
                 <button type="button" class="btn btn-primary" onclick="sendRequest()">submit</button>
                 <button type="button" class="btn btn-secondary" onclick="cancelLightBox();">cancel</button>

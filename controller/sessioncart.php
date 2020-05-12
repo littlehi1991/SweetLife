@@ -1,13 +1,16 @@
 <?php
+
 error_reporting(E_ALL);
 session_start();
 $pid = $_POST['page'];
 $size = $_POST['size'];
 $period = $_POST['period'];
 $others = $_POST['others'];
+$price = $_POST['price'];
 
 
-$proarray = array($pid , $size , $period , $others );
+
+$proarray = array($pid , $size , $period , $others ,$price);
 
 
 

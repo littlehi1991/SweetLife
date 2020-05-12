@@ -33,9 +33,9 @@
             let price = $('#exampleFormControlSelect1 :selected').attr('data-price');
             let id = $('#exampleFormControlSelect1').val();
             let quantity = $('#exampleFormControlSelect2').val();
-
             $('.show_price').html(price * quantity);
         }
+
     </script>
     </head>
     <body>
@@ -90,7 +90,7 @@
                                                         </select>
                                                     </div>
                                                     <div class="form-group">
-                                                        <label for="exampleFormControlSelect1">配送期數</label>
+                                                        <label for="exampleFormControlSelect2">配送期數</label>
                                                         <select  class="form-control" id="exampleFormControlSelect2" name="period">
                                                             <?php
                                                                 foreach ($pval as $k2 => $v2){
@@ -102,7 +102,7 @@
                                                                 }?>
                                                         </select>
                                                     </div>
-                                                    <div >方案金額$<p class="show_price"></p></div>
+                                                    <div >方案金額$<p class="show_price"><?php echo $v['price'];?></p></div>
                                                     <div class="form-group">
                                                         <label for="exampleFormControlTextarea1" >特別要求</label>
                                                         <textarea class="form-control" id="exampleFormControlTextarea" rows="3" name="others"><?php echo $v[3];?></textarea>
@@ -121,7 +121,7 @@
         </main>
     </body>
     <footer class="blog-footer">
-        <h5 style="text-align: center;">共計？？？元</h5>
+        <h5 class="totle_price" style="text-align: center;"></h5>元
         <p style="text-align: center;">
             <a href="#">前往結帳</a>
         </p>

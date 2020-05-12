@@ -35,6 +35,7 @@
                 let quantity = $('#exampleFormControlSelect2').val();
 
                 $('.show_price').html(price * quantity);
+                $('.price').val(price * quantity);
             }
         </script>
     </head>
@@ -63,7 +64,6 @@
                 $plann = implode(',',$plan);
                 $psql = "SELECT * FROM sweetlife.plan WHERE id IN ($plann)";
                 $pval = $conn->query($psql)->fetch_all(1);
-                var_dump($pval);
             ?>
             <div class="position-relative overflow-hidden p-3 p-md-5 m-md-3 text-center bg-light">
                     <div class="col-md-5 p-lg-5 mx-auto my-5">
@@ -102,6 +102,7 @@
                                                 </select>
                                             </div>
                                             <div >共計<p class="show_price"></p><span>元</span></div>
+                                            <input type="hidden" class="price" name="price" value="">
                                             <div class="form-group">
                                                 <label for="exampleFormControlTextarea1" >特別要求</label>
                                                 <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="others"></textarea>
