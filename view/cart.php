@@ -17,23 +17,28 @@
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
         <!--        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>-->
     <script>
-        $(document).ready(function () {
-            replaceTotalPrice();
-        });
+        // function getItemPrice(getPrice,id) {
+        //     let price = $(getPrice).attr('class');
+        //     let itemPrice = $(getPrice).find(':selected').attr('data-price');
+        //     countItem(id , itemPrice);
+        // }
+        //
+        // function getItemPeriod(getPeriod,id) {
+        //     let period = $(getPeriod).attr('class');
+        //     let itemPeriod = $(getPeriod).find(':selected').val();
+        //     countItem(id , itemPeriod);
+        // }
+        function getId(id) {
+            countItem(id);
+        }
 
-        $(document).on('change', '#exampleFormControlSelect1', function() {
-            replaceTotalPrice();
-        });
-
-        $(document).on('change', '#exampleFormControlSelect2', function () {
-            replaceTotalPrice();
-        });
-
-        function replaceTotalPrice() {
-            let price = $('#exampleFormControlSelect1 :selected').attr('data-price');
-            let id = $('#exampleFormControlSelect1').val();
-            let quantity = $('#exampleFormControlSelect2').val();
-            $('.show_price').html(price * quantity);
+        function countItem(id) {
+            let countPrice = $('.item_select_'+id).find(':selected').attr('data-price');
+            let countPeriod = $('.period_select_'+id).find(':selected').val();
+            console.log(countPeriod , countPrice);
+            console.log($('.show_price_'+id));
+            console.log(countPrice * countPeriod);
+            $('.show_price_'+id).text(countPrice * countPeriod);
         }
 
     </script>
@@ -78,7 +83,7 @@
                                                 <form method="post" action="../controller/sessioncart.php">
                                                     <div class="form-group">
                                                         <label for="exampleFormControlSelect1">餅乾淨重</label>
-                                                        <select  class="form-control" id="exampleFormControlSelect1" name="size">
+                                                        <select onchange="getId(<?= $v0['id'] ?>)" class="form-control item_select_<?php echo $v0['id'];?>" id="item" name="size">
                                                             <?php
                                                                 foreach ($pval as $k2 => $v2) {
                                                                     if ((int)$v[1] === (int)$v2['size']) { ?>
@@ -91,7 +96,7 @@
                                                     </div>
                                                     <div class="form-group">
                                                         <label for="exampleFormControlSelect2">配送期數</label>
-                                                        <select  class="form-control" id="exampleFormControlSelect2" name="period">
+                                                        <select onchange="getId( <?= $v0['id'] ?>)" class="form-control period_select_<?php echo $v0['id'];?>" id="period" name="period">
                                                             <?php
                                                                 foreach ($pval as $k2 => $v2){
                                                                     if((int)$v[2] === (int)$v2['period']){ ?>
@@ -102,7 +107,7 @@
                                                                 }?>
                                                         </select>
                                                     </div>
-                                                    <div >方案金額$<p class="show_price"><?php echo $v['price'];?></p></div>
+                                                    <div >方案金額$<p class="show_price_<? echo $v0['id'];?>"><?php echo $v[4];?></p></div>
                                                     <div class="form-group">
                                                         <label for="exampleFormControlTextarea1" >特別要求</label>
                                                         <textarea class="form-control" id="exampleFormControlTextarea" rows="3" name="others"><?php echo $v[3];?></textarea>
