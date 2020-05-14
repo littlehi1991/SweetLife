@@ -35,9 +35,6 @@
         function countItem(id) {
             let countPrice = $('.item_select_'+id).find(':selected').attr('data-price');
             let countPeriod = $('.period_select_'+id).find(':selected').val();
-            console.log(countPeriod , countPrice);
-            console.log($('.show_price_'+id));
-            console.log(countPrice * countPeriod);
             $('.show_price_'+id).text(countPrice * countPeriod);
         }
 
@@ -65,8 +62,10 @@
                 include "../controller/db.php";
                 $sql= "SELECT * FROM sweetlife.program ";
                 $val= $conn -> query($sql) -> fetch_all(1);
+
                 $psql = "SELECT * FROM sweetlife.plan";
                 $pval = $conn -> query($psql) -> fetch_all(1);
+
                 if(!isset($cartNum)){
                     echo "<script>alert('購物車內沒有商品!');history.back();</script>";
                 }
@@ -107,7 +106,7 @@
                                                                 }?>
                                                         </select>
                                                     </div>
-                                                    <div >方案金額$<p class="show_price_<? echo $v0['id'];?>"><?php echo $v[4];?></p></div>
+                                                    <div >方案金額$<p class="show_price_<?php echo $v0['id'];?>"><?php echo $v[4];?></p></div>
                                                     <div class="form-group">
                                                         <label for="exampleFormControlTextarea1" >特別要求</label>
                                                         <textarea class="form-control" id="exampleFormControlTextarea" rows="3" name="others"><?php echo $v[3];?></textarea>
