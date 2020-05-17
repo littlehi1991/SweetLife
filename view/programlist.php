@@ -34,9 +34,6 @@
                         $sql= "SELECT * FROM sweetlife.program";
                         $val= $conn->query($sql)->fetch_all(1);
 
-//                        unset($val[0]);
-//                        unset($val[1]);
-
                         $psql = "SELECT * FROM sweetlife.plan";
                         $pval = $conn->query($psql)->fetch_all(1);
                         foreach ($val as $k => $v){
