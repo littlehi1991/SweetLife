@@ -3,8 +3,11 @@
     <?php
     require "config.php";
     session_start();
-    $userid = $_SESSION['email'];
+    $userId = $_SESSION['email'];
     $cartNum = $_SESSION['orderlist'] ;
+    include '../controller/db.php';
+    $ssql = "SELECT username , type FROM sweetlife.member WHERE email = '" . $userId . "'";
+    $vval = $conn->query($ssql)->fetch_all(1);
     ?>
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <a class="navbar-brand" href="<?php echo DOMAIN."SweetsLife/view/index.php"?>">logo</a>
@@ -24,7 +27,7 @@
         </div>
         <div>
             <?php
-                if(isset($userid)){
+                if(isset($userId)){
             ?>
             <a href="<?php echo DOMAIN . 'Sweetslife/view/cart.php'?>"><img src="img/cart.png" alt="購物車圖示" title="購物車圖示" width="35x;"></a>
             <?php } else {?>
@@ -39,10 +42,7 @@
         </div>
         <div>
             <?php
-                include '../controller/db.php';
-                $ssql = "SELECT username , type FROM sweetlife.member WHERE email = '" . $userid . "'";
-                $vval = $conn->query($ssql)->fetch_all(1);
-                 if( !isset($userid) ){
+                 if( !isset($userId) ){
                      echo '<a href='. DOMAIN . "Sweetslife/view/login.php".'><img src="img/icon.png" alt="會員圖示" title="會員頭像" width="50px;"></a>';
                      echo '歡迎光臨';
                  } else {

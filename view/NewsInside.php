@@ -1,3 +1,16 @@
+<!--        連線資料庫-->
+<?php
+$page = $_GET['id'];
+include "../controller/db.php";
+$sql = "SELECT * FROM sweetlife.news n  JOIN sweetlife.author a ON n.author_id = a.author_id WHERE n.id='$page' ";
+$val = $conn->query($sql)->fetch_all(1);
+
+$res = $val[0]['type'];
+$tsql = "SELECT n.id AS nid , n.title  
+                                FROM sweetlife.news n JOIN sweetlife.type t ON n.type = t.t_id WHERE t.t_id ='" . $res . "'";
+$tval = $conn->query($tsql)->fetch_all(1);
+?>
+
 <!doctype html>
 <html lang="en">
     <head>
@@ -14,22 +27,13 @@
         <header>
             <?php include "nav.php";?>
         </header>
-<!--        連線資料庫-->
-
-        <?php
-        $page = $_GET['id'];
-        include "../controller/db.php";
-        $sql = "SELECT * FROM sweetlife.news n  JOIN sweetlife.author a ON n.author_id = a.author_id WHERE n.id='$page' ";
-        $val = $conn->query($sql)->fetch_all(1);
-        // var_dump($val);exit;
-        ?>
-        <nav aria-label="breadcrumb">
+        <div aria-label="breadcrumb">
             <ol class="breadcrumb">
                 <li class="breadcrumb-item"><a href="<?php echo DOMAIN . 'Sweetslife/view/index.php';?>">首頁</a></li>
                 <li class="breadcrumb-item"><a href="<?php echo  DOMAIN . 'Sweetslife/view/Newslist.php';?>">文章列表</a></li>
                 <li class="breadcrumb-item active" aria-current="page"><?php echo $val[0]['title'];?></li>
             </ol>
-        </nav>
+        </div>
 
 <!--        將資料庫取出各欄位的值填入html-->
     <div class="container">
@@ -64,12 +68,7 @@
                 <div class="sidebar-module">
                     <h4>我們想推薦給你</h4>
                     <?php
-                        $res = $val[0]['type'];
-                        $sql = "SELECT n.id AS nid , n.title  
-                                FROM sweetlife.news n JOIN sweetlife.type t ON n.type = t.t_id WHERE t.t_id ='" . $res . "'";
-                        $val = $conn->query($sql)->fetch_all(1);
-                        foreach($val as $k =>$v){
-                        ?>
+                    foreach($tval as $k =>$v){ ?>
                     <ol class="list-unstyled">
                         <li><a href="<?php echo  DOMAIN."SweetsLife/view/NewsInside.php?id=".$v['nid']; ?>"><?php echo $v['title'];?></a></li>
                     </ol>
@@ -82,11 +81,7 @@
 
     </div><!-- /.container -->
     </body>
-    <footer class="blog-footer">
-        <p style="text-align: center;">
-            <a href="#">Back to top</a>
-        </p>
-    </footer>
+
 
 
     <!-- Bootstrap core JavaScript

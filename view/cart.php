@@ -63,7 +63,9 @@
                             foreach ($val as $k0 => $v0) {
                                 if ((int)$v0['id'] === (int)$v[0]) {  //如果產品id===session儲存的pid
                                     $plann = json_decode($v0['plan_id']);  //   單項產品會有多項方案（以json格式儲存，轉為陣列格式
-                                    ?>
+                                    foreach ($plann as $kk => $vv) {//  每項商品多個方案回圈取出值
+                                        var_dump($vv);
+                                        ?>
                                     <div class="card mb-4 shadow-sm">
                                     <div class="card-header">
                                         <h4 class="my-0 font-weight-normal"><?php echo $v0['name']; ?></h4>
@@ -76,15 +78,14 @@
                                     <label for="exampleFormControlSelect1">餅乾淨重</label>
                                     <select onchange="getId(<?= $v0['id'] ?>)" class="form-control item_select_<?php echo $v0['id']; ?>" id="item" name="size">
                                     <?php
-                                    foreach ($plann as $kk => $vv) {        //  每項商品多個方案回圈取出值
                                         foreach ($pval as $k2 => $v2) {
-                                            if ((int)$v[1] === (int)$v2['size'] ) { ?>
+                                            if ((int)$vv === (int)$v2['id'] ) { ?>
                                                 <option value="<?php echo $pval[$kk]['size']; ?>"
                                                         data-price="<?php echo $pval[$kk]['price']; ?>"
-                                                        selected><?php echo $pval[$kk]['size'];?></option>
+                                                        selected><?php echo $v[1];?></option>
                                             <?php } else { ?>
                                                 <option value="<?php echo $pval[$kk]['size']; ?>"
-                                                        data-price="<?php echo $pval[$kk]['price']; ?>"><?php echo $pval[$kk]['size'];?></option>
+                                                        data-price="<?php echo $pval[$kk]['price']; ?>"><?php echo $pval[$kk]['size']?></option>
                                             <?php }
                                         }
                                 } ?>

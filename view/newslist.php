@@ -1,5 +1,33 @@
 <?php session_start() ;
-$userid = $_SESSION['email']; ?>
+$userId = $_SESSION['email'];
+
+include "../controller/db.php";
+require "config.php";
+//取得指定頁次,判斷沒有GET資訊時要給1
+$cur_page = (empty($_GET['page'])) ? 1 : (int)$_GET['page'];
+$per_page = 2;//每頁幾筆資料
+
+//計算有開啟閱覽的全部文章筆數
+$totol_num = 'SELECT count(*) FROM sweetlife.news WHERE active=1';
+$pages = $conn->query($totol_num)->fetch_all(1);
+//
+//全部有幾頁
+$totol_page = ceil($pages[0]['count(*)'] / $per_page);
+//
+
+
+//每次要從總數量的文章筆數的第幾序位撈出幾筆資料
+$sql = "SELECT n.id,n.title,n.img,n.create_time,a.a_name,t.n_type  FROM sweetlife.news n 
+                                    JOIN sweetlife.author a ON n.author_id = a.author_id 
+                                    JOIN sweetlife.type t ON n.type = t.id 
+                                    ORDER BY create_time DESC 
+                                    LIMIT " . ($cur_page - 1) * $per_page . ',' . $per_page;
+//                            echo $sql;exit;
+$val = $conn->query($sql)->fetch_all(1);
+
+//迴圈取出資料表內的鍵跟值
+
+?>
 <!doctype html>
 <html lang="en">
     <head>
@@ -25,48 +53,22 @@ $userid = $_SESSION['email']; ?>
          </div>
             <div class="container">
                 <div class="row">
+                    <?php
+                    foreach ($val as $k => $v){
+                        $class = '';
+                        switch ($v['type']) {
+                            case '1':
+                                $class = "badge badge-danger";
+                                break;
+                            case '2':
+                                $class = "badge badge-success";
+                                break;
+                            default :
+                                $class = "badge badge-warning";
+                                break;
+                        }
+                    ?>
                     <div class="col-md-4">
-                        <?php
-                            include "../controller/db.php";
-                            require "config.php";
-                            //取得指定頁次,判斷沒有GET資訊時要給1
-                            $cur_page = (empty($_GET['page'])) ? 1 : (int)$_GET['page'];
-                            $per_page = 2;//每頁幾筆資料
-
-                            //計算有開啟閱覽的全部文章筆數
-                            $totol_num = 'SELECT count(*) FROM sweetlife.news WHERE active=1';
-                            $pages =  $conn ->query($totol_num)->fetch_all(1);
-//
-                            //全部有幾頁
-                            $totol_page = ceil($pages[0]['count(*)']/ $per_page);
-//
-
-
-                            //每次要從總數量的文章筆數的第幾序位撈出幾筆資料
-                            $sql = "SELECT n.id,n.title,n.img,n.create_time,a.a_name,t.n_type  FROM sweetlife.news n 
-                                    JOIN sweetlife.author a ON n.author_id = a.author_id 
-                                    JOIN sweetlife.type t ON n.type = t.id 
-                                    ORDER BY create_time DESC 
-                                    LIMIT " .($cur_page - 1) * $per_page. ',' .$per_page;
-//                            echo $sql;exit;
-                            $val = $conn->query($sql)->fetch_all(1);
-
-                            //迴圈取出資料表內的鍵跟值
-                            foreach ($val as $k => $v){
-                                $class = '' ;
-                                switch($v['type']){
-                                    case '1':
-                                        $class = "badge badge-danger";
-                                        break;
-                                    case '2':
-                                        $class = "badge badge-success";
-                                        break;
-                                    default :
-                                        $class ="badge badge-warning";
-                                        break;
-                                }
-                            ?>
-
                         <div class="card" style="width: 18rem;">
                             <a href="<?php echo DOMAIN . "SweetsLife/view/NewsInside.php?id=".$v['id'];?>" ><img src=<?php echo "../controller/".$v['img']?> class="card-img-top" alt="..."></a>
                             <span class="<?php echo $class;?>"><?php echo $v['n_type']; ?></span>
@@ -80,7 +82,7 @@ $userid = $_SESSION['email']; ?>
                             <div class="card-body">
                                 <a href="<?php echo DOMAIN . "SweetsLife/view/NewsInside.php?id=".$v['id'];?>" class="card-link">閱讀全文</a>
                                 <?php
-                                    $usql = "SELECT type FROM sweetlife.member WHERE email = '" . $userid . "'";
+                                    $usql = "SELECT type FROM sweetlife.member WHERE email = '" . $userId . "'";
                                     $uval = $conn -> query($usql) ->fetch_all(1);
                                     if((int)$uval[0]['type']===0){
                                         echo '<a href=' . DOMAIN . "SweetsLife/view/newsadmin.php" .'>編輯</a>';
@@ -117,13 +119,5 @@ $userid = $_SESSION['email']; ?>
          </div>
     </main>
     </body>
-        <footer class="text-muted">
-        <div class="container">
-<!--            <p class="float-right">-->
-<!--                <a href="#">Back to top</a>-->
-<!--            </p>-->
-
-        </div>
-    </footer>
     <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
     <script>window.jQuery || document.write('<script src="/docs/4.4/assets/js/vendor/jquery.slim.min.js"><\/script>')</script><script src="/docs/4.4/dist/js/bootstrap.bundle.min.js" integrity="sha384-6khuMg9gaYr5AxOqhkVIODVIvm9ynTT5J4V1cfthmT+emCG6yVmEZsRHdxlotUnm" crossorigin="anonymous"></script></body>
